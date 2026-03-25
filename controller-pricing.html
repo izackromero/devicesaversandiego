@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controller Repair Pricing | Device Saver San Diego</title>
+  <meta name="description" content="PS4 and PS5 controller stick repair pricing in North County San Diego. Hall Effect and TMR upgrades that permanently eliminate stick drift. We come to you." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.devicesaversandiego.com/controller-pricing.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.devicesaversandiego.com/controller-pricing.html" />
+  <meta property="og:title"       content="Controller Stick Repair Pricing | Device Saver San Diego" />
+  <meta property="og:description" content="Hall Effect &amp; TMR stick upgrades for PS4 and PS5. Permanently eliminate stick drift — we come to you in North County San Diego." />
+  <meta property="og:image"       content="https://www.devicesaversandiego.com/og-image.png" />
+  <meta property="og:site_name"   content="Device Saver San Diego" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Gaming Controller Repair Pricing",
+    "description": "Interactive PS4 and PS5 controller stick repair pricing calculator. Hall Effect and TMR thumbstick upgrades that permanently fix stick drift.",
+    "url": "https://www.devicesaversandiego.com/controller-pricing.html",
+    "isPartOf": { "@type": "WebSite", "name": "Device Saver San Diego", "url": "https://www.devicesaversandiego.com" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://www.devicesaversandiego.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Controller Pricing", "item": "https://www.devicesaversandiego.com/controller-pricing.html" }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:#0a0a0a; --dark1:#111; --dark2:#1a1a1a; --dark3:#222; --dark4:#2c2c2c;
+      --mid:#444; --gray:#888; --lgray:#bbb; --border:#2e2e2e; --border2:#3a3a3a;
+      --white:#fff; --offwhite:#f0f0f0; --green:#5dde5d; --radius:10px;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',sans-serif; background:var(--dark1); color:var(--offwhite); line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    .container { max-width:900px; margin:0 auto; padding:0 24px; }
+
+    /* NAV */
+    nav { background:rgba(10,10,10,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:900px; margin:0 auto; }
+    .logo { font-size:1.1rem; font-weight:900; color:var(--white); }
+    .logo span { color:var(--gray); font-weight:400; }
+    .logo small { display:block; font-size:0.6rem; color:var(--mid); letter-spacing:1.5px; text-transform:uppercase; margin-top:2px; }
+    .nav-back { font-size:0.85rem; font-weight:600; color:var(--lgray); display:flex; align-items:center; gap:6px; }
+    .nav-back:hover { color:var(--white); }
+
+    /* HERO */
+    .hero { background:var(--black); padding:56px 24px 48px; text-align:center; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:48px 48px; opacity:0.3; }
+    .hero::after  { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 0%,var(--black) 90%); }
+    .hero-content { position:relative; z-index:1; }
+    .hero-tag { display:inline-block; font-size:0.7rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+    .hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); font-weight:900; letter-spacing:-1px; margin-bottom:10px; }
+    .hero h1 em { font-style:normal; color:var(--green); }
+    .hero p { color:var(--gray); font-size:0.95rem; max-width:500px; margin:0 auto 18px; }
+    .drift-hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(93,222,93,0.1); border:1px solid rgba(93,222,93,0.25); color:var(--green); font-size:0.78rem; font-weight:700; padding:6px 18px; border-radius:30px; letter-spacing:0.3px; }
+
+    /* TECH EXPLAINER */
+    .tech-strip { background:var(--dark2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:32px 24px; }
+    .tech-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .tech-card { background:var(--dark3); border:1.5px solid var(--border2); border-radius:12px; padding:20px 18px; }
+    .tech-card.recommended { border-color:#555; }
+    .tech-card.recommended::before { content:'Most Durable'; display:block; font-size:0.62rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--lgray); margin-bottom:10px; }
+    .tech-name { font-size:1rem; font-weight:800; color:var(--white); margin-bottom:4px; }
+    .tech-price-line { font-size:0.82rem; color:var(--gray); margin-bottom:10px; }
+    .tech-price-line strong { color:var(--white); }
+    .tech-desc { font-size:0.8rem; color:var(--gray); line-height:1.6; }
+    .tech-bullet { display:flex; align-items:flex-start; gap:7px; font-size:0.8rem; color:var(--gray); margin-top:7px; }
+    .tech-bullet::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; margin-top:1px; }
+
+    /* STEPS */
+    .steps { padding:44px 0 20px; }
+    .step { margin-bottom:36px; }
+    .step-label { font-size:0.68rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+    .step-num { width:22px; height:22px; border-radius:50%; background:var(--dark4); border:1px solid var(--border2); color:var(--lgray); font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .step-num.active { background:var(--white); color:var(--black); border-color:var(--white); }
+
+    /* PLATFORM TABS */
+    /* STOCK BADGES */
+    .stock-badge { display:inline-flex; align-items:center; gap:4px; font-size:0.68rem; font-weight:700; padding:3px 9px; border-radius:20px; margin-top:10px; }
+    .stock-in  { background:rgba(93,222,93,0.1);  border:1px solid rgba(93,222,93,0.25);  color:#5dde5d; }
+    .stock-low { background:rgba(255,193,7,0.1);  border:1px solid rgba(255,193,7,0.3);   color:#ffc107; }
+    .stock-out { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:var(--mid); }
+    .upgrade-card.out-of-stock { opacity:0.5; pointer-events:none; }
+    .upgrade-card .stock-badge { margin-top:10px; }
+
+    .platform-tabs { display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:480px; }
+    .platform-tab { padding:18px 20px; background:var(--dark2); border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; text-align:center; transition:all 0.2s; }
+    .platform-tab:hover { border-color:var(--mid); }
+    .platform-tab.active { border-color:var(--white); background:var(--dark3); }
+    .platform-tab .tab-icon { font-size:1.8rem; margin-bottom:6px; }
+    .platform-tab .tab-label { font-size:0.97rem; font-weight:800; color:var(--offwhite); }
+    .platform-tab .tab-sub { font-size:0.75rem; color:var(--gray); margin-top:2px; }
+
+    /* UPGRADE TYPE CARDS */
+    .upgrade-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .upgrade-card { background:var(--dark2); border:1.5px solid var(--border); border-radius:14px; padding:20px 18px; cursor:pointer; transition:all 0.2s; position:relative; overflow:hidden; }
+    .upgrade-card:hover { border-color:var(--mid); }
+    .upgrade-card.selected { border-color:var(--white); background:var(--dark3); }
+    .upgrade-card.recommended { border-color:#555; }
+    .upgrade-card.recommended::before { content:'Most Popular'; position:absolute; top:0; left:0; right:0; background:var(--dark4); color:var(--lgray); font-size:0.62rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; text-align:center; padding:5px; border-bottom:1px solid var(--border2); }
+    .upgrade-card.recommended .uc-body { margin-top:14px; }
+    .uc-type { font-size:0.65rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .uc-name { font-size:1rem; font-weight:800; color:var(--white); margin-bottom:6px; }
+    .uc-desc { font-size:0.78rem; color:var(--gray); line-height:1.5; margin-bottom:14px; }
+    .uc-price { font-size:1.4rem; font-weight:900; color:var(--white); letter-spacing:-0.5px; }
+    .uc-price-sub { font-size:0.75rem; color:var(--gray); font-weight:400; }
+
+    /* STICK COUNT */
+    .stick-options { display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:400px; }
+    .stick-opt { padding:14px 18px; background:var(--dark2); border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all 0.2s; text-align:center; }
+    .stick-opt:hover { border-color:var(--mid); }
+    .stick-opt.selected { border-color:var(--white); background:var(--dark3); }
+    .stick-opt .so-label { font-size:0.95rem; font-weight:700; color:var(--white); }
+    .stick-opt .so-sub { font-size:0.75rem; color:var(--gray); margin-top:3px; }
+
+    /* CUSTOM SURCHARGE */
+    .surcharge-toggle { display:flex; align-items:center; gap:14px; background:var(--dark2); border:1.5px solid var(--border); border-radius:var(--radius); padding:16px 18px; cursor:pointer; transition:border-color 0.2s; max-width:480px; }
+    .surcharge-toggle:hover { border-color:var(--mid); }
+    .surcharge-toggle.active { border-color:#888; }
+    .surcharge-check { width:20px; height:20px; border-radius:5px; border:1.5px solid var(--border2); background:var(--dark3); display:flex; align-items:center; justify-content:center; font-size:0.75rem; flex-shrink:0; transition:all 0.15s; }
+    .surcharge-toggle.active .surcharge-check { background:var(--white); border-color:var(--white); color:var(--black); }
+    .surcharge-text strong { display:block; font-size:0.9rem; color:var(--offwhite); font-weight:700; }
+    .surcharge-text span { font-size:0.78rem; color:var(--gray); }
+
+    /* PRICE SUMMARY */
+    #summaryStep { display:none; animation:fadeUp 0.3s ease forwards; }
+    #summaryStep.visible { display:block; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    .price-summary-card { background:var(--dark2); border:1.5px solid var(--border2); border-radius:14px; padding:24px 22px; margin-bottom:20px; }
+    .ps-row { display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--gray); padding:6px 0; border-bottom:1px solid var(--border); }
+    .ps-row:last-of-type { border-bottom:none; }
+    .ps-row span:last-child { color:var(--lgray); font-weight:600; }
+    .ps-total { display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:14px; border-top:1px solid var(--border2); }
+    .ps-total-label { font-size:0.85rem; font-weight:700; color:var(--lgray); text-transform:uppercase; letter-spacing:0.5px; }
+    .ps-total-val { font-size:1.8rem; font-weight:900; color:var(--white); letter-spacing:-1px; }
+
+    /* SCHEDULING (reused from pricing.html) */
+    #scheduleStep { display:none; animation:fadeUp 0.35s ease forwards; }
+    #scheduleStep.visible { display:block; }
+
+    .repair-summary { background:var(--dark3); border:1px solid var(--border2); border-radius:12px; padding:18px 20px; margin-bottom:24px; display:flex; flex-wrap:wrap; gap:12px 28px; align-items:center; }
+    .repair-summary-label { font-size:0.65rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; }
+    .repair-summary-val { font-size:0.95rem; font-weight:700; color:var(--offwhite); }
+    .repair-summary-price { margin-left:auto; text-align:right; }
+    .repair-summary-price .repair-summary-label { text-align:right; }
+    .repair-summary-price .total-price { font-size:1.6rem; font-weight:900; color:var(--white); letter-spacing:-1px; }
+    .change-selection { font-size:0.8rem; color:var(--gray); cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+    .change-selection:hover { color:var(--lgray); }
+
+    .schedule-form { background:var(--dark2); border:1.5px solid var(--border); border-radius:14px; padding:28px 24px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .form-group { display:flex; flex-direction:column; gap:6px; }
+    .form-group.full { grid-column:1 / -1; }
+    .form-label { font-size:0.75rem; font-weight:700; color:var(--lgray); letter-spacing:0.5px; text-transform:uppercase; }
+    .form-input { padding:12px 14px; background:var(--dark3); border:1.5px solid var(--border2); border-radius:8px; font-size:0.92rem; font-family:'Inter',sans-serif; color:var(--offwhite); transition:border-color 0.2s; width:100%; }
+    .form-input:focus { outline:none; border-color:#666; }
+    .form-input::placeholder { color:var(--mid); }
+
+    .time-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .time-slot { padding:10px 8px; background:var(--dark3); border:1.5px solid var(--border2); border-radius:8px; text-align:center; cursor:pointer; transition:all 0.15s; font-size:0.82rem; font-weight:600; color:var(--lgray); user-select:none; }
+    .time-slot:hover { border-color:var(--mid); }
+    .time-slot.selected { border-color:var(--white); background:var(--dark4); color:var(--white); }
+    .time-slot .slot-icon { font-size:1.1rem; display:block; margin-bottom:3px; }
+    .time-slot .slot-sub { display:block; font-size:0.7rem; color:var(--gray); font-weight:400; margin-top:1px; }
+
+    .submit-btn { width:100%; padding:16px; background:var(--white); color:var(--black); border:none; border-radius:10px; font-size:1rem; font-weight:800; font-family:'Inter',sans-serif; cursor:pointer; transition:all 0.2s; margin-top:8px; letter-spacing:-0.3px; }
+    .submit-btn:hover { background:var(--offwhite); transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+    .submit-btn:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+    .form-disclaimer { font-size:0.75rem; color:var(--mid); text-align:center; margin-top:10px; }
+
+    .booking-success { display:none; text-align:center; padding:52px 24px; background:var(--dark2); border:1.5px solid var(--border); border-radius:14px; animation:fadeUp 0.4s ease forwards; }
+    .booking-success.visible { display:block; }
+    .success-icon { font-size:3rem; margin-bottom:16px; }
+    .booking-success h2 { font-size:1.6rem; font-weight:900; color:var(--white); margin-bottom:10px; letter-spacing:-0.5px; }
+    .booking-success p { color:var(--gray); font-size:0.92rem; max-width:380px; margin:0 auto 24px; }
+    .booking-confirmation { background:var(--dark3); border:1px solid var(--border2); border-radius:10px; padding:16px 20px; max-width:360px; margin:0 auto 24px; text-align:left; }
+    .booking-confirmation .conf-row { display:flex; justify-content:space-between; font-size:0.82rem; color:var(--gray); padding:5px 0; border-bottom:1px solid var(--border); }
+    .booking-confirmation .conf-row:last-child { border-bottom:none; }
+    .booking-confirmation .conf-row span:last-child { color:var(--lgray); font-weight:600; text-align:right; }
+    .back-home-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--dark4); border:1px solid var(--border2); border-radius:8px; font-size:0.87rem; font-weight:700; color:var(--lgray); cursor:pointer; transition:all 0.2s; }
+    .back-home-btn:hover { background:var(--dark3); color:var(--white); border-color:var(--mid); }
+
+    /* MISC */
+    .pricing-note { background:var(--dark2); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; margin-top:16px; font-size:0.82rem; color:var(--gray); }
+    .pricing-note strong { color:var(--lgray); }
+    footer { background:var(--black); border-top:1px solid var(--border); padding:28px 0; text-align:center; color:var(--mid); font-size:0.8rem; margin-top:64px; }
+    footer a { color:var(--lgray); }
+    .float-cta { position:fixed; bottom:24px; right:20px; z-index:999; }
+    .float-cta a { display:flex; align-items:center; gap:8px; background:var(--white); color:var(--black); font-weight:700; font-size:0.87rem; padding:12px 20px; border-radius:50px; box-shadow:0 4px 24px rgba(0,0,0,0.6); transition:all 0.2s; }
+
+    @media(max-width:600px) {
+      .tech-grid { grid-template-columns:1fr; }
+      .upgrade-cards { grid-template-columns:1fr; }
+      .platform-tabs { grid-template-columns:1fr 1fr; }
+      .form-grid { grid-template-columns:1fr; }
+      .form-group.full { grid-column:1; }
+      .repair-summary { flex-direction:column; gap:8px; }
+      .repair-summary-price { margin-left:0; text-align:left; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Device<span>Saver</span><small>San Diego · North County</small></a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Controller Repair</div>
+    <h1>Fix Stick Drift <em>Permanently.</em></h1>
+    <p>Hall Effect and TMR upgrades for PS4 and PS5 controllers. Magnetic technology — no contact, no wear, no drift coming back.</p>
+    <div class="drift-hero-badge">⚡ Not a bandaid — a permanent fix</div>
+  </div>
+</div>
+
+<!-- TECH EXPLAINER -->
+<div class="tech-strip">
+  <div class="container">
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-name">Hall Effect</div>
+        <div class="tech-price-line"><strong>$25 per stick</strong> · PS4 &amp; PS5</div>
+        <div class="tech-desc">Uses a magnet and sensor instead of physical contact. No wear surface means the stick can never drift the way a stock controller does.</div>
+        <div class="tech-bullet">True zero-drift technology</div>
+        <div class="tech-bullet">Industry-standard upgrade</div>
+        <div class="tech-bullet">Drop-in fit for PS4 &amp; PS5</div>
+      </div>
+      <div class="tech-card recommended">
+        <div class="tech-name">TMR (Tunnel Magnetoresistance)</div>
+        <div class="tech-price-line"><strong>$30 per stick</strong> · PS4 &amp; PS5</div>
+        <div class="tech-desc">Next-generation magnetic sensing with even finer precision than Hall Effect. Higher resolution input, ultra-consistent center point, built to last.</div>
+        <div class="tech-bullet">More precise than Hall Effect</div>
+        <div class="tech-bullet">Ultra-stable center deadzone</div>
+        <div class="tech-bullet">Best long-term investment</div>
+      </div>
+    </div>
+    <div class="pricing-note" style="margin-top:16px;">
+      <strong>Custom / modded controllers:</strong> A flat <strong>+$15 surcharge</strong> applies to controllers with custom shells, button modifications, or aftermarket internals due to the additional disassembly time.
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<div class="steps" style="padding-bottom:48px;">
+  <div class="container">
+
+    <!-- STEP 1: Platform -->
+    <div class="step">
+      <div class="step-label"><span class="step-num">1</span> Choose Your Controller</div>
+      <div class="platform-tabs">
+        <div class="platform-tab active" onclick="selectPlatform('ps4', this)">
+          <div class="tab-icon">🎮</div>
+          <div class="tab-label">PS4</div>
+          <div class="tab-sub">DualShock 4</div>
+        </div>
+        <div class="platform-tab" onclick="selectPlatform('ps5', this)">
+          <div class="tab-icon">🎮</div>
+          <div class="tab-label">PS5</div>
+          <div class="tab-sub">DualSense</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Upgrade Type -->
+    <div class="step">
+      <div class="step-label"><span class="step-num">2</span> Choose Upgrade Type</div>
+      <div class="upgrade-cards">
+        <div class="upgrade-card" id="card-he" onclick="selectUpgrade('he', this)">
+          <div class="uc-body">
+            <div class="uc-type">Upgrade</div>
+            <div class="uc-name">Hall Effect</div>
+            <div class="uc-desc">Magnetic sensing — no physical wear. Permanently eliminates drift at a great price point.</div>
+            <div class="uc-price">$25 <span class="uc-price-sub">/ stick</span></div>
+          </div>
+        </div>
+        <div class="upgrade-card recommended" id="card-tmr" onclick="selectUpgrade('tmr', this)">
+          <div class="uc-body">
+            <div class="uc-type">Premium Upgrade</div>
+            <div class="uc-name">TMR</div>
+            <div class="uc-desc">Next-gen magnetic sensing. More precise, more consistent, and the most durable option available.</div>
+            <div class="uc-price">$30 <span class="uc-price-sub">/ stick</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Stick Count -->
+    <div class="step">
+      <div class="step-label"><span class="step-num">3</span> How Many Sticks?</div>
+      <div class="stick-options">
+        <div class="stick-opt" id="sticks-1" onclick="selectSticks(1, this)">
+          <div class="so-label">1 Stick</div>
+          <div class="so-sub">Left or right</div>
+        </div>
+        <div class="stick-opt" id="sticks-2" onclick="selectSticks(2, this)">
+          <div class="so-label">2 Sticks</div>
+          <div class="so-sub">Both replaced</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Custom Surcharge -->
+    <div class="step">
+      <div class="step-label"><span class="step-num">4</span> Custom or Modded Controller?</div>
+      <div class="surcharge-toggle" id="surchargeToggle" onclick="toggleSurcharge()">
+        <div class="surcharge-check" id="surchargeCheck"></div>
+        <div class="surcharge-text">
+          <strong>Yes — add $15 custom controller surcharge</strong>
+          <span>Custom shell, button mods, or aftermarket internals</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICE SUMMARY -->
+    <div class="step" id="summaryStep">
+      <div class="step-label"><span class="step-num active">5</span> Your Quote</div>
+      <div class="price-summary-card">
+        <div class="ps-row"><span>Controller</span><span id="sumPlatform">—</span></div>
+        <div class="ps-row"><span>Upgrade type</span><span id="sumUpgrade">—</span></div>
+        <div class="ps-row"><span>Sticks</span><span id="sumSticks">—</span></div>
+        <div class="ps-row" id="surchargeRow" style="display:none;"><span>Custom controller</span><span>+$15</span></div>
+        <div class="ps-total">
+          <span class="ps-total-label">Total</span>
+          <span class="ps-total-val" id="sumTotal">—</span>
+        </div>
+      </div>
+      <button class="submit-btn" style="max-width:400px;" onclick="proceedToSchedule()">Book This Repair →</button>
+      <div class="pricing-note" style="margin-top:14px;">
+        90-day warranty on all stick upgrades · No payment until repair is complete · We come to you
+      </div>
+    </div>
+
+    <!-- STEP 6: SCHEDULING -->
+    <div class="step" id="scheduleStep">
+      <div class="step-label"><span class="step-num active">6</span> Schedule Your Repair</div>
+
+      <div class="repair-summary" id="repairSummary">
+        <div><div class="repair-summary-label">Controller</div><div class="repair-summary-val" id="schSumPlatform">—</div></div>
+        <div><div class="repair-summary-label">Upgrade</div><div class="repair-summary-val" id="schSumUpgrade">—</div></div>
+        <div><div class="repair-summary-label">Sticks</div><div class="repair-summary-val" id="schSumSticks">—</div></div>
+        <div class="repair-summary-price">
+          <div class="repair-summary-label">Total</div>
+          <div class="total-price" id="schSumTotal">—</div>
+        </div>
+        <div style="width:100%;padding-top:4px;"><span class="change-selection" onclick="changeSelection()">← Change selection</span></div>
+      </div>
+
+      <div class="schedule-form" id="scheduleForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="fieldName">Your Name</label>
+            <input class="form-input" id="fieldName" type="text" placeholder="First &amp; last name" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldPhone">Phone Number</label>
+            <input class="form-input" id="fieldPhone" type="tel" placeholder="(619) 820-8047" autocomplete="tel" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="fieldEmail">Email Address</label>
+            <input class="form-input" id="fieldEmail" type="email" placeholder="you@email.com" autocomplete="email" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="fieldAddress">Service Address <span style="color:var(--mid);font-weight:400;text-transform:none;letter-spacing:0;">(where we'll meet you)</span></label>
+            <input class="form-input" id="fieldAddress" type="text" placeholder="Street address, city — e.g. 123 Main St, Carlsbad" autocomplete="street-address" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldDate">Preferred Date</label>
+            <input class="form-input" id="fieldDate" type="date" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldNotes">Notes <span style="color:var(--mid);font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <input class="form-input" id="fieldNotes" type="text" placeholder="Parking, gate code, etc." />
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Preferred Time Slot</label>
+            <div class="time-slots">
+              <div class="time-slot" onclick="selectSlot(this,'morning')">
+                <span class="slot-icon">🌅</span>Morning<span class="slot-sub">8 AM – 12 PM</span>
+              </div>
+              <div class="time-slot" onclick="selectSlot(this,'afternoon')">
+                <span class="slot-icon">☀️</span>Afternoon<span class="slot-sub">12 PM – 5 PM</span>
+              </div>
+              <div class="time-slot" onclick="selectSlot(this,'evening')">
+                <span class="slot-icon">🌆</span>Evening<span class="slot-sub">5 PM – 8 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="submitBooking()">Confirm Booking Request →</button>
+        <div class="form-disclaimer">We'll text or call you within 1 hour to confirm. No payment due until the repair is complete.</div>
+      </div>
+
+      <div class="booking-success" id="bookingSuccess">
+        <div class="success-icon">✅</div>
+        <h2>Booking Request Sent!</h2>
+        <p>We'll reach out within 1 hour to confirm your appointment. See you soon!</p>
+        <div class="booking-confirmation" id="bookingConfirmation"></div>
+        <a href="index.html" class="back-home-btn">← Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    © 2026 Device Saver San Diego · North County San Diego ·
+    <a href="tel:+16198208047">📞 (619) 820-8047</a> ·
+    <a href="index.html">Back to main site</a>
+  </div>
+</footer>
+
+<div class="float-cta">
+  <a href="tel:+16198208047">📞 Call Now</a>
+</div>
+
+<script>
+// ── PRICING ────────────────────────────────────────────────────────────────
+const PRICES = { he: 25, tmr: 30 };
+const SURCHARGE = 15;
+
+// ── INVENTORY ──────────────────────────────────────────────────────────────
+let inventory = {};
+fetch('./inventory.json')
+  .then(r => r.json())
+  .then(data => { inventory = data; applyControllerBadges(); })
+  .catch(() => { inventory = {}; });
+
+function stockBadge(status) {
+  if (!status || status === 'in')  return '<span class="stock-badge stock-in">✓ In Stock</span>';
+  if (status === 'low')            return '<span class="stock-badge stock-low">⚠ Low Stock</span>';
+  if (status === 'out')            return '<span class="stock-badge stock-out">✗ Out of Stock</span>';
+  return '';
+}
+
+function applyControllerBadges() {
+  const ctrl = inventory.controller || {};
+  ['he', 'tmr'].forEach(key => {
+    const card = document.getElementById('card-' + key);
+    if (!card) return;
+    const status = ctrl[key] || 'in';
+    // Remove any existing badge
+    const old = card.querySelector('.stock-badge');
+    if (old) old.remove();
+    // Insert badge after the price div
+    const priceEl = card.querySelector('.uc-price');
+    if (priceEl) priceEl.insertAdjacentHTML('afterend', stockBadge(status));
+    // Disable card if out of stock
+    if (status === 'out') {
+      card.classList.add('out-of-stock');
+      card.onclick = null;
+    } else {
+      card.classList.remove('out-of-stock');
+    }
+  });
+}
+
+let platform    = 'ps4';
+let upgradeType = null;   // 'he' | 'tmr'
+let stickCount  = null;   // 1 | 2
+let customCtrl  = false;
+let selectedSlot = '';
+let bookingSummary = {};
+
+// Set date min
+document.getElementById('fieldDate').setAttribute('min', new Date().toISOString().split('T')[0]);
+
+// ── STEP HANDLERS ─────────────────────────────────────────────────────────
+function selectPlatform(p, el) {
+  platform = p;
+  document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  recalc();
+}
+
+function selectUpgrade(type, el) {
+  upgradeType = type;
+  document.querySelectorAll('.upgrade-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  recalc();
+}
+
+function selectSticks(n, el) {
+  stickCount = n;
+  document.querySelectorAll('.stick-opt').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  recalc();
+}
+
+function toggleSurcharge() {
+  customCtrl = !customCtrl;
+  const tog = document.getElementById('surchargeToggle');
+  const chk = document.getElementById('surchargeCheck');
+  tog.classList.toggle('active', customCtrl);
+  chk.textContent = customCtrl ? '✓' : '';
+  recalc();
+}
+
+// ── CALCULATION ───────────────────────────────────────────────────────────
+function fmt(n) { return '$' + n; }
+
+function recalc() {
+  if (!upgradeType || !stickCount) {
+    hideSummary();
+    return;
+  }
+
+  const stickPrice  = PRICES[upgradeType];
+  const stickTotal  = stickPrice * stickCount;
+  const surcharge   = customCtrl ? SURCHARGE : 0;
+  const total       = stickTotal + surcharge;
+
+  const platformLabel  = platform === 'ps4' ? 'PS4 (DualShock 4)' : 'PS5 (DualSense)';
+  const upgradeLabel   = upgradeType === 'he' ? 'Hall Effect' : 'TMR';
+  const sticksLabel    = stickCount === 1 ? '1 stick' : '2 sticks';
+
+  // Populate summary
+  document.getElementById('sumPlatform').textContent = platformLabel;
+  document.getElementById('sumUpgrade').textContent  = upgradeLabel + ' · ' + fmt(stickPrice) + '/stick';
+  document.getElementById('sumSticks').textContent   = sticksLabel + ' × ' + fmt(stickPrice) + ' = ' + fmt(stickTotal);
+  document.getElementById('sumTotal').textContent    = fmt(total);
+
+  const surchargeRow = document.getElementById('surchargeRow');
+  surchargeRow.style.display = customCtrl ? '' : 'none';
+
+  // Show summary
+  const step = document.getElementById('summaryStep');
+  step.classList.add('visible');
+  step.style.display = 'block';
+
+  // Store for booking
+  bookingSummary = { platformLabel, upgradeLabel, sticksLabel, stickPrice, stickTotal, surcharge, total };
+}
+
+function hideSummary() {
+  const step = document.getElementById('summaryStep');
+  step.classList.remove('visible');
+  step.style.display = 'none';
+  hideSchedule();
+}
+
+// ── SCHEDULING ────────────────────────────────────────────────────────────
+function proceedToSchedule() {
+  const { platformLabel, upgradeLabel, sticksLabel, total } = bookingSummary;
+
+  document.getElementById('schSumPlatform').textContent = platformLabel;
+  document.getElementById('schSumUpgrade').textContent  = upgradeLabel;
+  document.getElementById('schSumSticks').textContent   = sticksLabel;
+  document.getElementById('schSumTotal').textContent    = fmt(total);
+
+  document.getElementById('scheduleForm').style.display    = 'block';
+  document.getElementById('bookingSuccess').classList.remove('visible');
+  document.getElementById('bookingSuccess').style.display  = 'none';
+
+  selectedSlot = '';
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+
+  const step = document.getElementById('scheduleStep');
+  step.classList.add('visible');
+  step.style.display = 'block';
+  setTimeout(() => step.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
+}
+
+function hideSchedule() {
+  const step = document.getElementById('scheduleStep');
+  step.classList.remove('visible');
+  step.style.display = 'none';
+}
+
+function changeSelection() {
+  hideSchedule();
+  document.getElementById('summaryStep').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function selectSlot(el, slot) {
+  selectedSlot = slot;
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function submitBooking() {
+  const name    = document.getElementById('fieldName').value.trim();
+  const phone   = document.getElementById('fieldPhone').value.trim();
+  const email   = document.getElementById('fieldEmail').value.trim();
+  const address = document.getElementById('fieldAddress').value.trim();
+  const date    = document.getElementById('fieldDate').value;
+
+  if (!name || !phone || !email || !address || !date || !selectedSlot) {
+    ['fieldName','fieldPhone','fieldEmail','fieldAddress','fieldDate'].forEach(id => {
+      const el = document.getElementById(id);
+      el.style.borderColor = el.value.trim() ? 'var(--border2)' : '#c0392b';
+    });
+    if (!selectedSlot) document.querySelectorAll('.time-slot').forEach(s => s.style.outline = '1.5px solid #c0392b');
+    return;
+  }
+
+  ['fieldName','fieldPhone','fieldEmail','fieldAddress','fieldDate'].forEach(id => {
+    document.getElementById(id).style.borderColor = 'var(--border2)';
+  });
+  document.querySelectorAll('.time-slot').forEach(s => s.style.outline = '');
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  setTimeout(() => showSuccess({ name, phone, email, address, date, slot: selectedSlot }), 900);
+}
+
+function showSuccess(data) {
+  const slotLabels = { morning:'Morning (8am–12pm)', afternoon:'Afternoon (12pm–5pm)', evening:'Evening (5pm–8pm)' };
+  const dateFormatted = new Date(data.date + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+  const { platformLabel, upgradeLabel, sticksLabel, total } = bookingSummary;
+
+  document.getElementById('scheduleForm').style.display = 'none';
+
+  document.getElementById('bookingConfirmation').innerHTML = `
+    <div class="conf-row"><span>Controller</span><span>${platformLabel}</span></div>
+    <div class="conf-row"><span>Upgrade</span><span>${upgradeLabel}</span></div>
+    <div class="conf-row"><span>Sticks</span><span>${sticksLabel}</span></div>
+    <div class="conf-row"><span>Total (est.)</span><span>$${total}</span></div>
+    <div class="conf-row"><span>Date</span><span>${dateFormatted}</span></div>
+    <div class="conf-row"><span>Time</span><span>${slotLabels[data.slot]}</span></div>
+    <div class="conf-row"><span>Address</span><span>${data.address}</span></div>
+    <div class="conf-row"><span>Contact</span><span>${data.name}</span></div>
+  `;
+
+  const success = document.getElementById('bookingSuccess');
+  success.style.display = 'block';
+  success.classList.add('visible');
+  success.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+</script>
+</body>
+</html>

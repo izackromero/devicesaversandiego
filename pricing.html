@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen Repair Pricing | Device Saver San Diego</title>
+  <meta name="description" content="Instant iPhone &amp; iPad screen repair pricing for North County San Diego. See transparent parts + labor cost, pick your quality tier, and book a mobile technician to come to you." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.devicesaversandiego.com/pricing.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.devicesaversandiego.com/pricing.html" />
+  <meta property="og:title"       content="iPhone &amp; iPad Screen Repair Pricing | Device Saver San Diego" />
+  <meta property="og:description" content="See exact repair costs instantly — parts + labor, no surprises. Choose your quality tier and book a mobile technician in North County San Diego." />
+  <meta property="og:image"       content="https://www.devicesaversandiego.com/og-image.png" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:site_name"   content="Device Saver San Diego" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="iPhone &amp; iPad Screen Repair Pricing | Device Saver San Diego" />
+  <meta name="twitter:description" content="Transparent parts + labor pricing. We come to you in North County San Diego." />
+  <meta name="twitter:image"       content="https://www.devicesaversandiego.com/og-image.png" />
+
+  <!-- Pricing Page Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Screen Repair Pricing Calculator",
+    "description": "Interactive iPhone and iPad screen repair pricing tool. Shows parts cost plus labor for every Apple device model, with three quality tiers.",
+    "url": "https://www.devicesaversandiego.com/pricing.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Device Saver San Diego",
+      "url": "https://www.devicesaversandiego.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",   "item": "https://www.devicesaversandiego.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Pricing","item": "https://www.devicesaversandiego.com/pricing.html" }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:#0a0a0a; --dark1:#111; --dark2:#1a1a1a; --dark3:#222; --dark4:#2c2c2c;
+      --mid:#444; --gray:#888; --lgray:#bbb; --border:#2e2e2e; --border2:#3a3a3a;
+      --white:#fff; --offwhite:#f0f0f0; --green:#5dde5d; --radius:10px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif; background:var(--dark1); color:var(--offwhite); line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    .container { max-width:1000px; margin:0 auto; padding:0 24px; }
+
+    /* NAV */
+    nav { background:rgba(10,10,10,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1000px; margin:0 auto; }
+    .logo { font-size:1.1rem; font-weight:900; color:var(--white); }
+    .logo span { color:var(--gray); font-weight:400; }
+    .logo small { display:block; font-size:0.6rem; color:var(--mid); letter-spacing:1.5px; text-transform:uppercase; margin-top:2px; }
+    .nav-back { font-size:0.85rem; font-weight:600; color:var(--lgray); display:flex; align-items:center; gap:6px; }
+    .nav-back:hover { color:var(--white); }
+
+    /* HERO */
+    .hero { background:var(--black); padding:60px 24px 52px; text-align:center; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:48px 48px; opacity:0.3; }
+    .hero::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 0%,var(--black) 90%); }
+    .hero-content { position:relative; z-index:1; }
+    .hero-tag { display:inline-block; font-size:0.7rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+    .hero h1 { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; letter-spacing:-1px; margin-bottom:10px; }
+    .hero h1 em { font-style:normal; color:var(--gray); }
+    .hero p { color:var(--gray); font-size:0.95rem; max-width:480px; margin:0 auto; }
+
+    /* STEPS */
+    .steps { padding:48px 0; }
+    .step { margin-bottom:40px; }
+    .step-label { font-size:0.68rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+    .step-num { width:22px; height:22px; border-radius:50%; background:var(--dark4); border:1px solid var(--border2); color:var(--lgray); font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .step-num.active { background:var(--white); color:var(--black); border-color:var(--white); }
+
+    /* STOCK BADGES */
+    .stock-badge { display:inline-flex; align-items:center; gap:4px; font-size:0.68rem; font-weight:700; padding:3px 9px; border-radius:20px; margin-top:10px; }
+    .stock-in  { background:rgba(93,222,93,0.1);  border:1px solid rgba(93,222,93,0.25);  color:#5dde5d; }
+    .stock-low { background:rgba(255,193,7,0.1);  border:1px solid rgba(255,193,7,0.3);   color:#ffc107; }
+    .stock-out { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:var(--mid); }
+    .book-btn.out-of-stock { opacity:0.4; cursor:not-allowed; pointer-events:none; }
+
+    /* DEVICE TYPE TABS */
+    .device-tabs { display:flex; gap:10px; flex-wrap:wrap; }
+    .device-tab { flex:1; min-width:120px; padding:16px 20px; background:var(--dark2); border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; text-align:center; transition:all 0.2s; }
+    .device-tab:hover { border-color:var(--mid); }
+    .device-tab.active { border-color:var(--white); background:var(--dark3); }
+    .device-tab .tab-icon { font-size:1.6rem; margin-bottom:6px; }
+    .device-tab .tab-label { font-size:0.9rem; font-weight:700; color:var(--offwhite); }
+    .device-tab .tab-sub { font-size:0.75rem; color:var(--gray); margin-top:2px; }
+
+    /* MODEL SELECT */
+    .model-select-wrap { position:relative; }
+    .model-select-wrap select {
+      width:100%; padding:14px 16px; background:var(--dark2); border:1.5px solid var(--border2);
+      border-radius:var(--radius); font-size:0.95rem; font-family:'Inter',sans-serif;
+      color:var(--offwhite); -webkit-appearance:none; appearance:none; cursor:pointer;
+      transition:border-color 0.2s;
+    }
+    .model-select-wrap select:focus { outline:none; border-color:#666; }
+    .model-select-wrap::after { content:'▾'; position:absolute; right:16px; top:50%; transform:translateY(-50%); color:var(--gray); pointer-events:none; font-size:1rem; }
+    select option { background:var(--dark3); }
+    select optgroup { color:var(--mid); font-style:normal; font-size:0.8rem; }
+
+    /* PRICING CARDS */
+    .pricing-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .pricing-card {
+      background:var(--dark2); border:1.5px solid var(--border); border-radius:14px;
+      padding:22px 18px; display:flex; flex-direction:column; position:relative; overflow:hidden;
+      transition:all 0.2s; opacity:0.4;
+    }
+    .pricing-card.available { opacity:1; }
+    .pricing-card.recommended { border-color:#666; }
+    .pricing-card.recommended::before { content:'Most Popular'; position:absolute; top:0; left:0; right:0; background:var(--dark4); color:var(--lgray); font-size:0.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; text-align:center; padding:5px; border-bottom:1px solid var(--border2); }
+    .pricing-card.recommended .card-body { margin-top:12px; }
+    .card-tier { font-size:0.68rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+    .card-name { font-size:1rem; font-weight:800; color:var(--white); margin-bottom:4px; }
+    .card-desc { font-size:0.78rem; color:var(--gray); margin-bottom:16px; line-height:1.5; flex:1; }
+    .card-divider { height:1px; background:var(--border); margin-bottom:14px; }
+    .price-row { display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; color:var(--gray); margin-bottom:5px; }
+    .price-row span:last-child { color:var(--lgray); font-weight:600; }
+    .price-total { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+    .price-total-label { font-size:0.8rem; font-weight:700; color:var(--lgray); text-transform:uppercase; letter-spacing:0.5px; }
+    .price-total-val { font-size:1.5rem; font-weight:900; color:var(--white); letter-spacing:-0.5px; }
+    .na-msg { font-size:0.82rem; color:var(--mid); text-align:center; margin-top:20px; }
+    .book-btn {
+      display:block; width:100%; padding:11px; margin-top:16px;
+      background:var(--dark4); border:1px solid var(--border2); border-radius:8px;
+      color:var(--lgray); font-size:0.82rem; font-weight:700; text-align:center;
+      cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif;
+    }
+    .book-btn:hover { background:var(--white); color:var(--black); border-color:var(--white); }
+    .pricing-card.recommended .book-btn { background:var(--white); color:var(--black); border-color:var(--white); }
+    .pricing-card.recommended .book-btn:hover { background:var(--offwhite); }
+
+    /* PLACEHOLDER */
+    .select-prompt { text-align:center; padding:48px 20px; color:var(--mid); font-size:0.9rem; border:1px dashed var(--border); border-radius:14px; }
+    .select-prompt-icon { font-size:2rem; margin-bottom:10px; }
+
+    /* NOTE */
+    .pricing-note { background:var(--dark2); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; margin-top:16px; font-size:0.82rem; color:var(--gray); }
+    .pricing-note strong { color:var(--lgray); }
+
+    /* ─── SCHEDULING STEP ──────────────────────────────────────────── */
+    #scheduleStep {
+      display:none;
+      animation: fadeSlideUp 0.35s ease forwards;
+    }
+    #scheduleStep.visible { display:block; }
+
+    @keyframes fadeSlideUp {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* Repair summary banner */
+    .repair-summary {
+      background:var(--dark3); border:1px solid var(--border2); border-radius:12px;
+      padding:18px 20px; margin-bottom:24px; display:flex; flex-wrap:wrap;
+      gap:12px 28px; align-items:center;
+    }
+    .repair-summary-label { font-size:0.65rem; font-weight:700; color:var(--mid); letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; }
+    .repair-summary-val  { font-size:0.95rem; font-weight:700; color:var(--offwhite); }
+    .repair-summary-price { margin-left:auto; text-align:right; }
+    .repair-summary-price .repair-summary-label { text-align:right; }
+    .repair-summary-price .total-price { font-size:1.6rem; font-weight:900; color:var(--white); letter-spacing:-1px; }
+
+    .change-selection { font-size:0.8rem; color:var(--gray); cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+    .change-selection:hover { color:var(--lgray); }
+
+    /* Scheduling form */
+    .schedule-form { background:var(--dark2); border:1.5px solid var(--border); border-radius:14px; padding:28px 24px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .form-group { display:flex; flex-direction:column; gap:6px; }
+    .form-group.full { grid-column:1 / -1; }
+    .form-label { font-size:0.75rem; font-weight:700; color:var(--lgray); letter-spacing:0.5px; text-transform:uppercase; }
+    .form-input {
+      padding:12px 14px; background:var(--dark3); border:1.5px solid var(--border2);
+      border-radius:8px; font-size:0.92rem; font-family:'Inter',sans-serif;
+      color:var(--offwhite); transition:border-color 0.2s; width:100%;
+    }
+    .form-input:focus { outline:none; border-color:#666; }
+    .form-input::placeholder { color:var(--mid); }
+    .form-input option { background:var(--dark3); }
+
+    .time-slots { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .time-slot {
+      padding:10px 8px; background:var(--dark3); border:1.5px solid var(--border2);
+      border-radius:8px; text-align:center; cursor:pointer; transition:all 0.15s;
+      font-size:0.82rem; font-weight:600; color:var(--lgray); user-select:none;
+    }
+    .time-slot:hover { border-color:var(--mid); }
+    .time-slot.selected { border-color:var(--white); background:var(--dark4); color:var(--white); }
+    .time-slot .slot-icon { font-size:1.1rem; display:block; margin-bottom:3px; }
+    .time-slot .slot-label { display:block; }
+    .time-slot .slot-sub { display:block; font-size:0.7rem; color:var(--gray); font-weight:400; margin-top:1px; }
+
+    .submit-btn {
+      width:100%; padding:16px; background:var(--white); color:var(--black);
+      border:none; border-radius:10px; font-size:1rem; font-weight:800;
+      font-family:'Inter',sans-serif; cursor:pointer; transition:all 0.2s;
+      margin-top:8px; letter-spacing:-0.3px;
+    }
+    .submit-btn:hover { background:var(--offwhite); transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+    .submit-btn:active { transform:translateY(0); }
+    .submit-btn:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+
+    .form-disclaimer { font-size:0.75rem; color:var(--mid); text-align:center; margin-top:10px; }
+
+    /* SUCCESS STATE */
+    .booking-success {
+      display:none; text-align:center; padding:52px 24px;
+      background:var(--dark2); border:1.5px solid var(--border); border-radius:14px;
+      animation: fadeSlideUp 0.4s ease forwards;
+    }
+    .booking-success.visible { display:block; }
+    .success-icon { font-size:3rem; margin-bottom:16px; }
+    .booking-success h2 { font-size:1.6rem; font-weight:900; color:var(--white); margin-bottom:10px; letter-spacing:-0.5px; }
+    .booking-success p { color:var(--gray); font-size:0.92rem; max-width:380px; margin:0 auto 24px; }
+    .booking-confirmation { background:var(--dark3); border:1px solid var(--border2); border-radius:10px; padding:16px 20px; max-width:360px; margin:0 auto 24px; text-align:left; }
+    .booking-confirmation .conf-row { display:flex; justify-content:space-between; font-size:0.82rem; color:var(--gray); padding:5px 0; border-bottom:1px solid var(--border); }
+    .booking-confirmation .conf-row:last-child { border-bottom:none; }
+    .booking-confirmation .conf-row span:last-child { color:var(--lgray); font-weight:600; text-align:right; }
+    .back-home-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--dark4); border:1px solid var(--border2); border-radius:8px; font-size:0.87rem; font-weight:700; color:var(--lgray); cursor:pointer; transition:all 0.2s; }
+    .back-home-btn:hover { background:var(--dark3); color:var(--white); border-color:var(--mid); }
+
+    /* FOOTER */
+    footer { background:var(--black); border-top:1px solid var(--border); padding:28px 0; text-align:center; color:var(--mid); font-size:0.8rem; margin-top:64px; }
+    footer a { color:var(--lgray); }
+
+    /* FLOAT */
+    .float-cta { position:fixed; bottom:24px; right:20px; z-index:999; }
+    .float-cta a { display:flex; align-items:center; gap:8px; background:var(--white); color:var(--black); font-weight:700; font-size:0.87rem; padding:12px 20px; border-radius:50px; box-shadow:0 4px 24px rgba(0,0,0,0.6); transition:all 0.2s; }
+
+    @media(max-width:640px) {
+      .pricing-cards { grid-template-columns:1fr; }
+      .device-tabs { flex-direction:row; }
+      .form-grid { grid-template-columns:1fr; }
+      .form-group.full { grid-column:1; }
+      .time-slots { grid-template-columns:1fr 1fr 1fr; }
+      .repair-summary { flex-direction:column; gap:8px; }
+      .repair-summary-price { margin-left:0; text-align:left; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Device<span>Saver</span><small>San Diego · North County</small></a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Transparent Pricing</div>
+    <h1>Screen Repair <em>Price Calculator</em></h1>
+    <p>Select your device and model to see an instant breakdown — parts cost + labor, no surprises.</p>
+  </div>
+</div>
+
+<div class="steps">
+  <div class="container">
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-label"><span class="step-num" id="num1">1</span> Choose Device Type</div>
+      <div class="device-tabs">
+        <div class="device-tab active" onclick="selectType('iphone',this)">
+          <div class="tab-icon">📱</div>
+          <div class="tab-label">iPhone</div>
+          <div class="tab-sub">Screen replacement</div>
+        </div>
+        <div class="device-tab" onclick="selectType('ipad',this)">
+          <div class="tab-icon">📟</div>
+          <div class="tab-label">iPad</div>
+          <div class="tab-sub">Screen replacement</div>
+        </div>
+        <div class="device-tab" onclick="window.location.href='controller-pricing.html'">
+          <div class="tab-icon">🕹️</div>
+          <div class="tab-label">Controller</div>
+          <div class="tab-sub">Stick drift repair</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-label"><span class="step-num" id="num2">2</span> Select Your Model</div>
+      <div class="model-select-wrap">
+        <select id="modelSelect" onchange="updatePricing()">
+          <option value="">— Choose your model —</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step" id="pricingStep">
+      <div class="step-label"><span class="step-num" id="num3">3</span> Choose Part Quality</div>
+      <div id="pricingOutput">
+        <div class="select-prompt">
+          <div class="select-prompt-icon">👆</div>
+          Select your model above to see pricing options
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: SCHEDULING -->
+    <div class="step" id="scheduleStep">
+      <div class="step-label"><span class="step-num active" id="num4">4</span> Schedule Your Repair</div>
+
+      <!-- Repair summary banner -->
+      <div class="repair-summary" id="repairSummary">
+        <div>
+          <div class="repair-summary-label">Device</div>
+          <div class="repair-summary-val" id="summaryDevice">—</div>
+        </div>
+        <div>
+          <div class="repair-summary-label">Part Quality</div>
+          <div class="repair-summary-val" id="summaryTier">—</div>
+        </div>
+        <div>
+          <div class="repair-summary-label">Repair Type</div>
+          <div class="repair-summary-val">Screen Replacement</div>
+        </div>
+        <div class="repair-summary-price">
+          <div class="repair-summary-label">Total Price</div>
+          <div class="total-price" id="summaryTotal">—</div>
+        </div>
+        <div style="width:100%; padding-top:4px;">
+          <span class="change-selection" onclick="changeSelection()">← Change selection</span>
+        </div>
+      </div>
+
+      <!-- Scheduling form -->
+      <div class="schedule-form" id="scheduleForm">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label class="form-label" for="fieldName">Your Name</label>
+            <input class="form-input" id="fieldName" type="text" placeholder="First & last name" autocomplete="name" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldPhone">Phone Number</label>
+            <input class="form-input" id="fieldPhone" type="tel" placeholder="(619) 820-8047" autocomplete="tel" />
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="fieldEmail">Email Address</label>
+            <input class="form-input" id="fieldEmail" type="email" placeholder="you@email.com" autocomplete="email" />
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="fieldAddress">Service Address <span style="color:var(--mid);font-weight:400;text-transform:none;letter-spacing:0;">(where we'll meet you)</span></label>
+            <input class="form-input" id="fieldAddress" type="text" placeholder="Street address, city — e.g. 123 Main St, Carlsbad" autocomplete="street-address" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldDate">Preferred Date</label>
+            <input class="form-input" id="fieldDate" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldNotes">Notes <span style="color:var(--mid);font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <input class="form-input" id="fieldNotes" type="text" placeholder="Parking, gate code, etc." />
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label">Preferred Time Slot</label>
+            <div class="time-slots">
+              <div class="time-slot" onclick="selectSlot(this,'morning')">
+                <span class="slot-icon">🌅</span>
+                <span class="slot-label">Morning</span>
+                <span class="slot-sub">8 AM – 12 PM</span>
+              </div>
+              <div class="time-slot" onclick="selectSlot(this,'afternoon')">
+                <span class="slot-icon">☀️</span>
+                <span class="slot-label">Afternoon</span>
+                <span class="slot-sub">12 PM – 5 PM</span>
+              </div>
+              <div class="time-slot" onclick="selectSlot(this,'evening')">
+                <span class="slot-icon">🌆</span>
+                <span class="slot-label">Evening</span>
+                <span class="slot-sub">5 PM – 8 PM</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="submitBooking()">
+          Confirm Booking Request →
+        </button>
+        <div class="form-disclaimer">
+          We'll text or call you within 1 hour to confirm your appointment. No payment due until repair is complete.
+        </div>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="booking-success" id="bookingSuccess">
+        <div class="success-icon">✅</div>
+        <h2>Booking Request Sent!</h2>
+        <p>We'll reach out within 1 hour to confirm your appointment. See you soon!</p>
+        <div class="booking-confirmation" id="bookingConfirmation"></div>
+        <a href="index.html" class="back-home-btn">← Back to Home</a>
+      </div>
+
+    </div><!-- /scheduleStep -->
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="pricing-note">
+    <strong>How pricing works:</strong> Part costs are sourced from MobileSentrix wholesale pricing. A flat labor fee of <strong id="laborNote">$60</strong> is added to every screen repair. All prices include a <strong>90-day warranty</strong> on parts and labor. Final quote confirmed after free device diagnostic.
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    © 2026 Device Saver San Diego · North County San Diego ·
+    <a href="tel:+16198208047">📞 (619) 820-8047</a> ·
+    <a href="index.html">Back to main site</a>
+  </div>
+</footer>
+
+<div class="float-cta">
+  <a href="tel:+16198208047">📞 Call Now</a>
+</div>
+
+<script>
+// ─── PRICING DATA ───────────────────────────────────────────────────────────
+const IPHONE_LABOR = 60;
+const IPAD_LABOR   = 80;
+
+// null = not available for that tier
+const iphoneData = {
+  "iPhone Air":             { b:197.53, s:null,   p:329.78 },
+  "iPhone 17 Pro Max":      { b:95.04,  s:167.16, p:409.15 },
+  "iPhone 17 Pro":          { b:93.00,  s:168.69, p:355.17 },
+  "iPhone 17":              { b:54.33,  s:129.31, p:355.17 },
+  "iPhone 16e":             { b:22.54,  s:51.65,  p:null   },
+  "iPhone 16 Pro Max":      { b:161.23, s:null,   p:368.32 },
+  "iPhone 16 Pro":          { b:81.15,  s:129.50, p:315.23 },
+  "iPhone 16 Plus":         { b:46.82,  s:115.94, p:335.27 },
+  "iPhone 16":              { b:43.08,  s:111.75, p:270.43 },
+  "iPhone 15 Pro Max":      { b:33.20,  s:91.98,  p:null   },
+  "iPhone 15 Pro":          { b:null,   s:107.75, p:309.82 },
+  "iPhone 15 Plus":         { b:23.97,  s:102.55, p:316.45 },
+  "iPhone 15":              { b:22.69,  s:84.71,  p:265.20 },
+  "iPhone 14 Pro Max":      { b:32.89,  s:104.01, p:357.82 },
+  "iPhone 14 Pro":          { b:24.19,  s:null,   p:306.01 },
+  "iPhone 14 Plus":         { b:22.31,  s:57.26,  p:309.60 },
+  "iPhone 14":              { b:18.80,  s:48.39,  p:263.80 },
+  "iPhone 13 Pro Max":      { b:34.95,  s:52.44,  p:309.75 },
+  "iPhone 13 Pro":          { b:23.98,  s:62.30,  p:263.37 },
+  "iPhone 13":              { b:17.87,  s:47.88,  p:null   },
+  "iPhone 13 Mini":         { b:26.61,  s:null,   p:217.25 },
+  "iPhone 12 Pro Max":      { b:24.53,  s:54.47,  p:309.55 },
+  "iPhone 12 Pro":          { b:15.95,  s:51.74,  p:261.77 },
+  "iPhone 12":              { b:13.39,  s:51.74,  p:262.60 },
+  "iPhone 12 Mini":         { b:25.98,  s:null,   p:215.17 },
+  "iPhone 11 Pro Max":      { b:15.24,  s:40.78,  p:null   },
+  "iPhone 11 Pro":          { b:12.76,  s:51.49,  p:null   },
+  "iPhone 11":              { b:13.41,  s:17.05,  p:null   },
+  "iPhone XS Max":          { b:14.77,  s:32.52,  p:null   },
+  "iPhone XS":              { b:16.85,  s:34.34,  p:null   },
+  "iPhone XR":              { b:13.79,  s:17.43,  p:null   },
+  "iPhone X":               { b:16.88,  s:33.77,  p:null   },
+};
+
+const ipadData = {
+  "iPad Pro 13\" 7th Gen (2024)":         { b:null,   s:null,   p:749.00 },
+  "iPad Pro 12.9\" 5th-6th Gen (2021-22)":{ b:201.83, s:null,   p:266.67 },
+  "iPad Pro 12.9\" 3rd-4th Gen (2018-20)":{ b:130.56, s:137.79, p:164.13 },
+  "iPad Pro 11\" 5th Gen (2024)":          { b:null,   s:null,   p:599.00 },
+  "iPad Pro 11\" 3rd-4th Gen (2021-22)":   { b:115.68, s:127.80, p:229.92 },
+  "iPad Air 13\" (2024)":                  { b:null,   s:null,   p:null   },
+  "iPad Air 11\" (2024)":                  { b:137.00, s:null,   p:344.45 },
+  "iPad Air 4 / Air 5 (2020-22)":          { b:125.51, s:145.06, p:null   },
+  "iPad Mini 7 (2024)":                    { b:204.04, s:null,   p:275.79 },
+  "iPad Mini 6 (2021)":                    { b:192.26, s:208.68, p:null   },
+  "iPad 10 (2022)":                        { b:95.14,  s:null,   p:null   },
+  "iPad 7 / 8 / 9 (2019-21)":              { b:45.74,  s:54.72,  p:null   },
+};
+
+const iphoneGroups = [
+  { label:"iPhone 17 Series",  models:["iPhone Air","iPhone 17 Pro Max","iPhone 17 Pro","iPhone 17"] },
+  { label:"iPhone 16 Series",  models:["iPhone 16 Pro Max","iPhone 16 Pro","iPhone 16 Plus","iPhone 16","iPhone 16e"] },
+  { label:"iPhone 15 Series",  models:["iPhone 15 Pro Max","iPhone 15 Pro","iPhone 15 Plus","iPhone 15"] },
+  { label:"iPhone 14 Series",  models:["iPhone 14 Pro Max","iPhone 14 Pro","iPhone 14 Plus","iPhone 14"] },
+  { label:"iPhone 13 Series",  models:["iPhone 13 Pro Max","iPhone 13 Pro","iPhone 13","iPhone 13 Mini"] },
+  { label:"iPhone 12 Series",  models:["iPhone 12 Pro Max","iPhone 12 Pro","iPhone 12","iPhone 12 Mini"] },
+  { label:"iPhone 11 Series",  models:["iPhone 11 Pro Max","iPhone 11 Pro","iPhone 11"] },
+  { label:"iPhone X Series",   models:["iPhone XS Max","iPhone XS","iPhone XR","iPhone X"] },
+];
+
+const ipadGroups = [
+  { label:"iPad Pro",  models:["iPad Pro 13\" 7th Gen (2024)","iPad Pro 11\" 5th Gen (2024)","iPad Pro 12.9\" 5th-6th Gen (2021-22)","iPad Pro 11\" 3rd-4th Gen (2021-22)","iPad Pro 12.9\" 3rd-4th Gen (2018-20)"] },
+  { label:"iPad Air",  models:["iPad Air 13\" (2024)","iPad Air 11\" (2024)","iPad Air 4 / Air 5 (2020-22)"] },
+  { label:"iPad Mini", models:["iPad Mini 7 (2024)","iPad Mini 6 (2021)"] },
+  { label:"iPad",      models:["iPad 10 (2022)","iPad 7 / 8 / 9 (2019-21)"] },
+];
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+let currentType     = 'iphone';
+let selectedSlot    = '';
+let bookingDetails  = {};
+let inventory       = {};
+
+// ─── INVENTORY ──────────────────────────────────────────────────────────────
+fetch('./inventory.json')
+  .then(r => r.json())
+  .then(data => { inventory = data; })
+  .catch(() => { inventory = {}; });
+
+function stockBadge(status) {
+  if (!status || status === 'in')  return '<span class="stock-badge stock-in">✓ In Stock</span>';
+  if (status === 'low')            return '<span class="stock-badge stock-low">⚠ Low Stock</span>';
+  if (status === 'out')            return '<span class="stock-badge stock-out">✗ Out of Stock</span>';
+  return '';
+}
+
+function getStockStatus(model, tier) {
+  const section = currentType === 'iphone' ? inventory.iphone : inventory.ipad;
+  if (!section || !section[model]) return 'in';
+  return section[model][tier] || 'in';
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+buildModelOptions('iphone');
+// Set default min date for date picker to today
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('fieldDate').min = today;
+});
+// Also set it immediately in case DOMContentLoaded already fired
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('fieldDate').setAttribute('min', today);
+
+function selectType(type, el) {
+  currentType = type;
+  document.querySelectorAll('.device-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('laborNote').textContent = type === 'iphone' ? '$60' : '$80';
+  buildModelOptions(type);
+  document.getElementById('pricingOutput').innerHTML = `
+    <div class="select-prompt">
+      <div class="select-prompt-icon">👆</div>
+      Select your model above to see pricing options
+    </div>`;
+  hideSchedule();
+}
+
+function buildModelOptions(type) {
+  const sel = document.getElementById('modelSelect');
+  const groups = type === 'iphone' ? iphoneGroups : ipadGroups;
+  sel.innerHTML = '<option value="">— Choose your model —</option>';
+  groups.forEach(g => {
+    const og = document.createElement('optgroup');
+    og.label = g.label;
+    g.models.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      og.appendChild(opt);
+    });
+    sel.appendChild(og);
+  });
+}
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function updatePricing() {
+  const model = document.getElementById('modelSelect').value;
+  const output = document.getElementById('pricingOutput');
+  hideSchedule();
+
+  if (!model) {
+    output.innerHTML = `<div class="select-prompt"><div class="select-prompt-icon">👆</div>Select your model above to see pricing options</div>`;
+    return;
+  }
+
+  const labor = currentType === 'iphone' ? IPHONE_LABOR : IPAD_LABOR;
+  const data  = currentType === 'iphone' ? iphoneData  : ipadData;
+  const d     = data[model];
+
+  if (!d) {
+    output.innerHTML = `<div class="select-prompt"><div class="select-prompt-icon">🔧</div>Contact us for a custom quote on this model.</div>`;
+    return;
+  }
+
+  const tiers = [
+    {
+      key:'b', id:'budget',
+      tier:'Economy',
+      name:'Aftermarket LCD',
+      desc:'LCD incell display. Functional and budget-friendly. Good color accuracy with slightly reduced brightness vs. original.',
+      parts: d.b
+    },
+    {
+      key:'s', id:'standard',
+      tier:'Standard',
+      name:'OLED Aftermarket Pro',
+      desc:'XO7 soft OLED display. Near-original color reproduction, true blacks, and excellent brightness. Most popular choice.',
+      parts: d.s,
+      recommended: true
+    },
+    {
+      key:'p', id:'premium',
+      tier:'Premium',
+      name:'Genuine OEM / Refurbished',
+      desc:'Apple original or OEM-pull parts. Identical to factory display — best color, touch response, and True Tone support.',
+      parts: d.p
+    },
+  ];
+
+  const html = `
+    <div class="pricing-cards">
+      ${tiers.map(t => {
+        const avail = t.parts !== null;
+        const total = avail ? t.parts + labor : null;
+        return `
+        <div class="pricing-card ${avail ? 'available' : ''} ${t.recommended && avail ? 'recommended' : ''}">
+          ${t.recommended && avail ? '<div></div>' : ''}
+          <div class="card-body">
+            <div class="card-tier">${t.tier}</div>
+            <div class="card-name">${t.name}</div>
+            <div class="card-desc">${t.desc}</div>
+            ${avail ? (() => {
+              const stock = getStockStatus(model, t.key);
+              const isOut = stock === 'out';
+              return `
+              <div class="card-divider"></div>
+              <div class="price-row"><span>Parts cost</span><span>${fmt(t.parts)}</span></div>
+              <div class="price-row"><span>Labor</span><span>${fmt(labor)}</span></div>
+              <div class="price-total">
+                <span class="price-total-label">Total</span>
+                <span class="price-total-val">${fmt(total)}</span>
+              </div>
+              ${stockBadge(stock)}
+              <button class="book-btn ${isOut ? 'out-of-stock' : ''}" onclick="bookRepair('${model}', '${t.tier} — ${t.name}', ${total})">${isOut ? 'Out of Stock — Call Us' : 'Book This Repair →'}</button>
+              `;
+            })() : `<div class="na-msg">Not available<br>for this model</div>`}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="pricing-note" style="margin-top:14px;">
+      Showing pricing for <strong>${model}</strong> screen replacement · Labor: <strong>${fmt(labor)}</strong> · 90-day warranty included
+    </div>`;
+
+  output.innerHTML = html;
+}
+
+// ─── SCHEDULING ─────────────────────────────────────────────────────────────
+
+function bookRepair(model, tierLabel, total) {
+  // Store for later use
+  bookingDetails = { model, tierLabel, total };
+
+  // Populate the summary banner
+  document.getElementById('summaryDevice').textContent = model;
+  document.getElementById('summaryTier').textContent   = tierLabel;
+  document.getElementById('summaryTotal').textContent  = fmt(total);
+
+  // Reset form state
+  document.getElementById('scheduleForm').style.display  = 'block';
+  document.getElementById('bookingSuccess').classList.remove('visible');
+  document.getElementById('bookingSuccess').style.display = 'none';
+
+  // Reset time slots
+  selectedSlot = '';
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+
+  // Show the schedule step and scroll to it
+  const step = document.getElementById('scheduleStep');
+  step.classList.add('visible');
+  step.style.display = 'block';
+  setTimeout(() => {
+    step.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+function hideSchedule() {
+  const step = document.getElementById('scheduleStep');
+  step.classList.remove('visible');
+  step.style.display = 'none';
+}
+
+function changeSelection() {
+  hideSchedule();
+  document.getElementById('pricingStep').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function selectSlot(el, slot) {
+  selectedSlot = slot;
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function submitBooking() {
+  const name    = document.getElementById('fieldName').value.trim();
+  const phone   = document.getElementById('fieldPhone').value.trim();
+  const email   = document.getElementById('fieldEmail').value.trim();
+  const address = document.getElementById('fieldAddress').value.trim();
+  const date    = document.getElementById('fieldDate').value;
+  const notes   = document.getElementById('fieldNotes').value.trim();
+
+  // Basic validation
+  if (!name || !phone || !email || !address || !date || !selectedSlot) {
+    const missingFields = [];
+    if (!name)       missingFields.push('Name');
+    if (!phone)      missingFields.push('Phone');
+    if (!email)      missingFields.push('Email');
+    if (!address)    missingFields.push('Service Address');
+    if (!date)       missingFields.push('Preferred Date');
+    if (!selectedSlot) missingFields.push('Time Slot');
+
+    // Highlight empties
+    ['fieldName','fieldPhone','fieldEmail','fieldAddress','fieldDate'].forEach(id => {
+      const el = document.getElementById(id);
+      el.style.borderColor = el.value.trim() ? 'var(--border2)' : '#c0392b';
+    });
+    if (!selectedSlot) {
+      document.querySelectorAll('.time-slot').forEach(s => s.style.outline = '1.5px solid #c0392b');
+    }
+    return;
+  }
+
+  // Clear any error styling
+  ['fieldName','fieldPhone','fieldEmail','fieldAddress','fieldDate'].forEach(id => {
+    document.getElementById(id).style.borderColor = 'var(--border2)';
+  });
+  document.querySelectorAll('.time-slot').forEach(s => s.style.outline = '');
+
+  // Disable button to prevent double-submit
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  // Simulate sending (replace with a real API call or mailto: if needed)
+  setTimeout(() => {
+    showSuccess({ name, phone, email, address, date, slot: selectedSlot, notes });
+  }, 900);
+}
+
+function showSuccess(data) {
+  const slotLabels = { morning:'Morning (8am–12pm)', afternoon:'Afternoon (12pm–5pm)', evening:'Evening (5pm–8pm)' };
+  const dateFormatted = new Date(data.date + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+
+  // Hide form, show success
+  document.getElementById('scheduleForm').style.display = 'none';
+
+  const conf = document.getElementById('bookingConfirmation');
+  conf.innerHTML = `
+    <div class="conf-row"><span>Device</span><span>${bookingDetails.model}</span></div>
+    <div class="conf-row"><span>Repair</span><span>Screen Replacement</span></div>
+    <div class="conf-row"><span>Quality</span><span>${bookingDetails.tierLabel}</span></div>
+    <div class="conf-row"><span>Total (est.)</span><span>${fmt(bookingDetails.total)}</span></div>
+    <div class="conf-row"><span>Date</span><span>${dateFormatted}</span></div>
+    <div class="conf-row"><span>Time</span><span>${slotLabels[data.slot]}</span></div>
+    <div class="conf-row"><span>Address</span><span>${data.address}</span></div>
+    <div class="conf-row"><span>Contact</span><span>${data.name}</span></div>
+  `;
+
+  const success = document.getElementById('bookingSuccess');
+  success.style.display = 'block';
+  success.classList.add('visible');
+  success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "_note": "Update values to manage stock visibility on the website. 'in' = In Stock, 'low' = Low Stock, 'out' = Out of Stock. Tiers: b = Budget/Aftermarket LCD, s = Standard/OLED, p = Premium/OEM. To update, tell Claude (e.g. 'mark iPhone 15 standard as low stock') or edit this file directly.",
+
+  "iphone": {
+    "iPhone Air":             { "b": "in",  "p": "in"  },
+    "iPhone 17 Pro Max":      { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 17 Pro":          { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 17":              { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 16e":             { "b": "in",  "s": "in"  },
+    "iPhone 16 Pro Max":      { "b": "in",  "p": "in"  },
+    "iPhone 16 Pro":          { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 16 Plus":         { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 16":              { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 15 Pro Max":      { "b": "in",  "s": "in"  },
+    "iPhone 15 Pro":          { "s": "in",  "p": "in"  },
+    "iPhone 15 Plus":         { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 15":              { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 14 Pro Max":      { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 14 Pro":          { "b": "in",  "p": "in"  },
+    "iPhone 14 Plus":         { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 14":              { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 13 Pro Max":      { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 13 Pro":          { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 13":              { "b": "in",  "s": "in"  },
+    "iPhone 13 Mini":         { "b": "in",  "p": "in"  },
+    "iPhone 12 Pro Max":      { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 12 Pro":          { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 12":              { "b": "in",  "s": "in",  "p": "in"  },
+    "iPhone 12 Mini":         { "b": "in",  "p": "in"  },
+    "iPhone 11 Pro Max":      { "b": "in",  "s": "in"  },
+    "iPhone 11 Pro":          { "b": "in",  "s": "in"  },
+    "iPhone 11":              { "b": "in",  "s": "in"  },
+    "iPhone XS Max":          { "b": "in",  "s": "in"  },
+    "iPhone XS":              { "b": "in",  "s": "in"  },
+    "iPhone XR":              { "b": "in",  "s": "in"  },
+    "iPhone X":               { "b": "in",  "s": "in"  }
+  },
+
+  "ipad": {
+    "iPad Pro 13\" 7th Gen (2024)":          { "p": "in"  },
+    "iPad Pro 12.9\" 5th-6th Gen (2021-22)": { "b": "in",  "p": "in"  },
+    "iPad Pro 12.9\" 3rd-4th Gen (2018-20)": { "b": "in",  "s": "in",  "p": "in"  },
+    "iPad Pro 11\" 5th Gen (2024)":           { "p": "in"  },
+    "iPad Pro 11\" 3rd-4th Gen (2021-22)":    { "b": "in",  "s": "in",  "p": "in"  },
+    "iPad Air 11\" (2024)":                   { "b": "in",  "p": "in"  },
+    "iPad Air 4 / Air 5 (2020-22)":           { "b": "in",  "s": "in"  },
+    "iPad Mini 7 (2024)":                     { "b": "in",  "p": "in"  },
+    "iPad Mini 6 (2021)":                     { "b": "in",  "s": "in"  },
+    "iPad 10 (2022)":                         { "b": "in"  },
+    "iPad 7 / 8 / 9 (2019-21)":              { "b": "in",  "s": "in"  }
+  },
+
+  "controller": {
+    "he":  "in",
+    "tmr": "in"
+  }
+}

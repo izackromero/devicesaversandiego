@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Device Saver San Diego | Mobile Phone &amp; Electronics Repair – We Come To You</title>
+  <meta name="description" content="North County San Diego's mobile repair service — we come to you. iPhone &amp; Android screen repair, tablet screen replacement, and game console repair, fixed on the spot." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.devicesaversandiego.com/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.svg" />
+
+  <!-- Open Graph (Facebook, iMessage, WhatsApp previews) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.devicesaversandiego.com/" />
+  <meta property="og:title"       content="Device Saver San Diego | Mobile Phone Repair – We Come To You" />
+  <meta property="og:description" content="North County San Diego's mobile repair service. Screen repair for phones &amp; tablets, plus game console repair — we come to you." />
+  <meta property="og:image"       content="https://www.devicesaversandiego.com/og-image.png" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:site_name"   content="Device Saver San Diego" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Device Saver San Diego | Mobile Phone Repair" />
+  <meta name="twitter:description" content="We come to you. iPhone &amp; iPad screen repair, battery swaps, water damage &amp; more in North County San Diego." />
+  <meta name="twitter:image"       content="https://www.devicesaversandiego.com/og-image.png" />
+
+  <!-- Local Business Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Device Saver San Diego",
+    "description": "Mobile phone and electronics repair service serving North County San Diego. We come to you — home, office, or wherever you are.",
+    "url": "https://www.devicesaversandiego.com",
+    "telephone": "+16198208047",
+    "priceRange": "$$",
+    "image": "https://www.devicesaversandiego.com/og-image.png",
+    "sameAs": [
+      "https://www.yelp.com/biz/device-saver-san-diego"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Carlsbad" },
+      { "@type": "City", "name": "Oceanside" },
+      { "@type": "City", "name": "Vista" },
+      { "@type": "City", "name": "San Marcos" },
+      { "@type": "City", "name": "Escondido" },
+      { "@type": "City", "name": "Encinitas" },
+      { "@type": "City", "name": "Solana Beach" },
+      { "@type": "City", "name": "Del Mar" },
+      { "@type": "City", "name": "Rancho Santa Fe" },
+      { "@type": "City", "name": "Fallbrook" },
+      { "@type": "City", "name": "San Clemente" },
+      { "@type": "City", "name": "Temecula" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Mobile Repair Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "iPhone Screen Replacement" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Android Screen Replacement" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "iPad Screen Replacement" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Samsung Tablet Screen Replacement" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PS4 Controller Hall Effect Stick Upgrade" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PS5 DualSense Hall Effect Stick Upgrade" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PS4 Controller TMR Stick Upgrade" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PS5 DualSense TMR Stick Upgrade" } }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0a0a0a;
+      --dark1:    #111111;
+      --dark2:    #1a1a1a;
+      --dark3:    #222222;
+      --dark4:    #2c2c2c;
+      --mid:      #444444;
+      --gray:     #888888;
+      --lgray:    #bbbbbb;
+      --border:   #2e2e2e;
+      --border2:  #3a3a3a;
+      --white:    #ffffff;
+      --offwhite: #f0f0f0;
+      --radius:   10px;
+      --shadow:   0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark1); color: var(--offwhite); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* BUTTONS */
+    .btn { display: inline-block; padding: 13px 28px; border-radius: var(--radius); font-weight: 700; font-size: 0.92rem; cursor: pointer; border: none; transition: all 0.2s ease; text-align: center; }
+    .btn-white { background: var(--white); color: var(--black); }
+    .btn-white:hover { background: var(--offwhite); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid #555; }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* TOPBAR */
+    .topbar { background: var(--black); color: var(--gray); font-size: 0.78rem; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .topbar a { color: var(--lgray); }
+    .topbar a:hover { color: var(--white); }
+    .topbar-inner { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .topbar-item { display: flex; align-items: center; gap: 7px; }
+
+    /* NAVBAR */
+    nav { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1100px; margin: 0 auto; }
+    .logo { font-size: 1.2rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; line-height: 1.1; }
+    .logo span { color: var(--gray); font-weight: 400; }
+    .logo small { display: block; font-size: 0.6rem; font-weight: 500; color: var(--mid); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.87rem; font-weight: 600; color: var(--lgray); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links .cta-link { background: var(--white); color: var(--black); padding: 9px 20px; border-radius: 8px; font-size: 0.85rem; }
+    .nav-links .cta-link:hover { background: var(--offwhite); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--lgray); border-radius: 2px; }
+    .mobile-menu { display: none; background: var(--dark2); border-top: 1px solid var(--border); padding: 12px 24px 20px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 13px 0; font-weight: 600; color: var(--lgray); border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--white); }
+
+    /* HERO */
+    .hero { background: var(--black); color: var(--white); padding: 96px 24px 100px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 48px 48px; opacity: 0.35; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 50% 40%, transparent 0%, var(--black) 85%); }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--dark3); border: 1px solid var(--border2); color: var(--lgray); font-size: 0.75rem; font-weight: 600; padding: 6px 16px; border-radius: 30px; margin-bottom: 24px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .badge-dot { width: 7px; height: 7px; background: #5dde5d; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: var(--gray); }
+    .hero p { font-size: 1rem; color: var(--gray); max-width: 520px; margin: 0 auto 36px; line-height: 1.7; }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-stats { display: flex; justify-content: center; margin-top: 72px; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; max-width: 680px; margin-left: auto; margin-right: auto; }
+    .hero-stat { flex: 1; min-width: 130px; padding: 22px 20px; border-right: 1px solid var(--border); background: var(--dark2); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat strong { display: block; font-size: 1.6rem; font-weight: 800; color: var(--white); letter-spacing: -0.5px; margin-bottom: 3px; }
+    .hero-stat span { font-size: 0.74rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 500; }
+
+    /* HOW IT WORKS */
+    .how-strip { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 0; }
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .how-item { padding: 24px 20px; text-align: center; border-right: 1px solid var(--border); position: relative; }
+    .how-item:last-child { border-right: none; }
+    .how-num { font-size: 0.65rem; font-weight: 700; color: var(--mid); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .how-icon { font-size: 2rem; margin-bottom: 12px; }
+    .how-item h3 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .how-item p { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+    /* TRUST STRIP */
+    .trust-strip { background: var(--black); border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .trust-inner { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 600; color: var(--lgray); }
+
+    /* SECTIONS */
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-header { text-align: center; margin-bottom: 52px; }
+    .section-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--mid); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .section-header h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--white); letter-spacing: -0.5px; margin-bottom: 10px; }
+    .section-header p { color: var(--gray); font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
+    .section-divider { width: 40px; height: 2px; background: var(--dark4); margin: 14px auto 0; border-radius: 2px; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .service-card { background: var(--dark2); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 22px; transition: all 0.2s ease; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--dark4), transparent); transition: background 0.3s; }
+    .service-card:hover { border-color: var(--mid); background: var(--dark3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .service-card:hover::before { background: linear-gradient(90deg, transparent, #aaa, transparent); }
+    .service-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .service-card h3 { font-size: 0.97rem; font-weight: 700; color: var(--white); margin-bottom: 7px; }
+    .service-card p { font-size: 0.84rem; color: var(--gray); margin-bottom: 16px; line-height: 1.6; }
+
+    .price-tag { display: inline-block; background: var(--dark4); border: 1px solid var(--border2); color: var(--lgray); font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 6px; }
+    .price-tag.from::before { content: 'From '; font-weight: 400; color: var(--mid); }
+    a.price-tag { cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    a.price-tag:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+    a.price-tag:hover::before { color: #666; }
+
+    /* DEVICES */
+    .devices-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .device-chip { background: var(--dark3); border: 1px solid var(--border2); border-radius: 30px; padding: 8px 18px; font-size: 0.85rem; font-weight: 500; color: var(--lgray); transition: all 0.2s; }
+    .device-chip:hover { border-color: var(--mid); color: var(--white); background: var(--dark4); }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+    .review-card { background: var(--dark2); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s; }
+    .review-card:hover { border-color: var(--mid); }
+    .stars { color: #f0c040; font-size: 0.9rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .review-text { font-size: 0.88rem; color: var(--gray); margin-bottom: 16px; line-height: 1.7; }
+    .reviewer { display: flex; align-items: center; gap: 11px; }
+    .reviewer-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--dark4); border: 1px solid var(--border2); color: var(--lgray); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+    .reviewer-name { font-size: 0.85rem; font-weight: 700; color: var(--offwhite); }
+    .reviewer-loc { font-size: 0.76rem; color: var(--mid); }
+
+    /* SERVICE AREA */
+    .area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .area-info h2 { font-size: 1.8rem; font-weight: 800; color: var(--white); letter-spacing: -0.5px; margin-bottom: 12px; }
+    .area-info p { color: var(--gray); font-size: 0.92rem; margin-bottom: 20px; }
+    .area-cities { display: flex; flex-wrap: wrap; gap: 8px; }
+    .area-city { background: var(--dark3); border: 1px solid var(--border2); border-radius: 6px; padding: 6px 14px; font-size: 0.82rem; color: var(--lgray); font-weight: 600; }
+    .area-cta { margin-top: 28px; }
+
+    /* SCHEDULE CTA BANNER */
+    .schedule-banner {
+      background: var(--dark2);
+      border: 1px solid var(--border2);
+      border-radius: 14px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .schedule-banner-icon { font-size: 2.4rem; flex-shrink: 0; }
+    .schedule-banner-text { flex: 1; min-width: 200px; }
+    .schedule-banner-text h3 { font-size: 1.1rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .schedule-banner-text p { font-size: 0.87rem; color: var(--gray); }
+
+    /* SAVE CONTACT SECTION */
+    .contact-save-grid { display: grid; grid-template-columns: auto 1fr; gap: 64px; align-items: center; }
+    .contact-phone-wrap { display: flex; justify-content: center; }
+    .contact-phone-wrap img { width: 220px; height: auto; filter: drop-shadow(0 20px 48px rgba(0,0,0,0.7)); }
+    .contact-save-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; color: var(--mid); letter-spacing: 2px; text-transform: uppercase; background: var(--dark3); border: 1px solid var(--border2); padding: 5px 14px; border-radius: 30px; margin-bottom: 16px; }
+    .contact-save-info h3 { font-size: 1.8rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.1; }
+    .contact-save-sub { font-size: 0.92rem; color: var(--gray); margin-bottom: 24px; max-width: 380px; }
+    .contact-vcf-btn { display: flex; align-items: center; gap: 14px; background: var(--white); color: var(--black); padding: 14px 20px; border-radius: 12px; font-family: 'Inter', sans-serif; text-decoration: none; transition: all 0.2s; margin-bottom: 28px; max-width: 300px; }
+    .contact-vcf-btn:hover { background: var(--offwhite); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,0.12); }
+    .vcf-btn-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .contact-vcf-btn strong { display: block; font-size: 0.97rem; font-weight: 800; }
+    .contact-vcf-btn small { display: block; font-size: 0.78rem; color: #555; margin-top: 1px; }
+    .contact-save-details { display: flex; flex-direction: column; gap: 10px; }
+    .csd-row { display: flex; gap: 12px; align-items: baseline; font-size: 0.87rem; }
+    .csd-label { color: var(--mid); min-width: 80px; font-weight: 600; }
+    .csd-val { color: var(--lgray); }
+    .csd-val a { color: var(--lgray); }
+    @media(max-width:720px) {
+      .contact-save-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .contact-save-sub { margin: 0 auto 24px; }
+      .contact-vcf-btn { max-width: 100%; }
+      .csd-row { justify-content: center; }
+    }
+
+    /* FAQ */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; background: none; border: none; color: var(--white); font-size: 1rem; font-weight: 600; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color 0.2s; }
+    .faq-q:hover { color: var(--lgray); }
+    .faq-arrow { color: var(--mid); font-size: 1.2rem; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(-180deg); }
+    .faq-a { display: none; padding-bottom: 20px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p { color: var(--gray); font-size: 0.9rem; line-height: 1.75; }
+    .faq-a a { color: var(--lgray); }
+
+    /* WARRANTY */
+    .warranty-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .warranty-card { background: var(--dark2); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; }
+    .warranty-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .warranty-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .warranty-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.65; }
+
+    /* FOOTER */
+    footer { background: var(--black); color: var(--mid); padding: 56px 0 28px; border-top: 1px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-size: 1.1rem; font-weight: 900; color: var(--white); margin-bottom: 10px; }
+    .footer-logo span { color: var(--mid); font-weight: 400; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.75; }
+    footer h4 { color: var(--lgray); font-size: 0.75rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 9px; }
+    .footer-links a { color: var(--mid); font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 22px; text-align: center; font-size: 0.78rem; color: #444; }
+
+    /* FLOAT CTA */
+    .float-cta { position: fixed; bottom: 24px; right: 20px; z-index: 999; display: none; }
+    .float-cta a { display: flex; align-items: center; gap: 8px; background: var(--white); color: var(--black); font-weight: 700; font-size: 0.87rem; padding: 12px 20px; border-radius: 50px; box-shadow: 0 4px 24px rgba(0,0,0,0.6); transition: all 0.2s; }
+    .float-cta a:hover { background: var(--offwhite); transform: scale(1.04); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .float-cta { display: block; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .area-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 64px 16px 72px; }
+      .section { padding: 56px 0; }
+      .hero-stat { min-width: 100px; padding: 16px 14px; }
+      .how-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-item">📍 Serving All of North County San Diego</span>
+      <a href="tel:+16198208047" class="topbar-item">📞 (619) 820-8047</a>
+      <span class="topbar-item">⏰ Mon–Sat &nbsp;9AM – 7PM</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        Device<span>Saver</span>
+        <small>San Diego · Mobile Repair Service</small>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="pricing.html" class="cta-link">Schedule Repair</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services" onclick="toggleMenu()">Services & Pricing</a>
+      <a href="#area" onclick="toggleMenu()">Service Area</a>
+      <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+      <a href="#faq" onclick="toggleMenu()">FAQ</a>
+      <a href="pricing.html" onclick="toggleMenu()">📅 Schedule a Repair</a>
+      <a href="tel:+16198208047">📞 Call Us Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Mobile Repair · We Come To You · North County SD
+      </div>
+      <h1>We Fix Your Device<br /><em>At Your Location.</em></h1>
+      <p>Cracked screen? Broken console? We come to your home, office, or wherever you are in North County San Diego and fix it on the spot — phones, tablets, and game consoles.</p>
+      <div class="hero-buttons">
+        <a href="pricing.html" class="btn btn-white">📅 Schedule a Repair</a>
+        <a href="tel:+16198208047" class="btn btn-outline">📞 Call Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>5,000+</strong>
+          <span>Repairs Done</span>
+        </div>
+        <div class="hero-stat">
+          <strong>On-Site</strong>
+          <span>We Come To You</span>
+        </div>
+        <div class="hero-stat">
+          <strong>90-Day</strong>
+          <span>Warranty</span>
+        </div>
+        <div class="hero-stat">
+          <strong>⭐ 4.9</strong>
+          <span>Google Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-strip">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:32px;">
+        <div class="section-tag">How It Works</div>
+        <h2 style="font-size:1.4rem;font-weight:800;color:var(--white);letter-spacing:-0.3px;">Repair in 4 Simple Steps</h2>
+      </div>
+      <div class="how-grid">
+        <div class="how-item">
+          <div class="how-num">Step 01</div>
+          <div class="how-icon">🔍</div>
+          <h3>Pick Your Repair</h3>
+          <p>Use our price calculator to choose your device, model, and part quality tier.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-num">Step 02</div>
+          <div class="how-icon">📅</div>
+          <h3>Schedule a Time</h3>
+          <p>Pick a date and time that works for you. We'll confirm within the hour.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-num">Step 03</div>
+          <div class="how-icon">🚗</div>
+          <h3>We Come To You</h3>
+          <p>Our technician arrives at your home, office, or any location in North County SD.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-num">Step 04</div>
+          <div class="how-icon">✅</div>
+          <h3>Fixed On The Spot</h3>
+          <p>Most repairs take under an hour. We test everything before we leave.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item">✅ No Fix, No Fee</div>
+        <div class="trust-item">🚗 We Come To You</div>
+        <div class="trust-item">⚡ Same-Day Service</div>
+        <div class="trust-item">🔒 90-Day Warranty</div>
+        <div class="trust-item">🆓 Free Diagnostics</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">What We Fix</div>
+        <h2>Services & Pricing</h2>
+        <p>All repairs performed on-site at your location. Transparent pricing — no hidden fees, ever.</p>
+        <div class="section-divider"></div>
+        <a href="pricing.html" style="display:inline-block;margin-top:18px;padding:10px 24px;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;color:var(--lgray);font-size:0.85rem;font-weight:700;transition:all 0.2s;" onmouseover="this.style.borderColor='#666';this.style.color='#fff'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--lgray)'">🔍 Get an Instant Quote & Schedule →</a>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Screen Replacement</h3>
+          <p>Cracked or shattered display? We replace iPhone, Samsung, and Android screens at your location — choose from budget, standard, or OEM quality parts.</p>
+          <a href="pricing.html" class="price-tag from">$49</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📟</div>
+          <h3>Tablet Screen Repair</h3>
+          <p>iPad, Samsung Galaxy Tab, and more — screen replacements done on-site at your home or office, no drop-off needed.</p>
+          <a href="pricing.html" class="price-tag from">$69</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🕹️</div>
+          <h3>Gaming Controller Repair</h3>
+          <p>Hall Effect &amp; TMR thumbstick upgrades for PS4 and PS5 — magnetic technology that eliminates stick drift permanently, not just temporarily.</p>
+          <a href="controller-pricing.html" class="price-tag from">$25</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVICES -->
+  <section class="section section-alt" id="devices">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">We Work On</div>
+        <h2>Devices We Repair</h2>
+        <p>Phones, tablets, and consoles — if it has a screen or a controller, we fix it on-site.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="devices-list">
+        <span class="device-chip">📱 iPhone (all models)</span>
+        <span class="device-chip">📱 Samsung Galaxy</span>
+        <span class="device-chip">📱 Google Pixel</span>
+        <span class="device-chip">📱 OnePlus</span>
+        <span class="device-chip">📱 Motorola</span>
+        <span class="device-chip">📟 iPad (all models)</span>
+        <span class="device-chip">📟 Samsung Galaxy Tab</span>
+        <span class="device-chip">🎮 PS4 Controller</span>
+        <span class="device-chip">🎮 PS5 DualSense</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="section" id="area">
+    <div class="container">
+      <div class="area-grid">
+        <div class="area-info">
+          <div class="section-tag">Where We Go</div>
+          <h2>Serving All of<br />North County San Diego</h2>
+          <p>We travel directly to you — home, office, coffee shop, wherever is most convenient. No drop-off, no waiting, no hassle.</p>
+          <div class="area-cities">
+            <span class="area-city">Escondido</span>
+            <span class="area-city">San Marcos</span>
+            <span class="area-city">Vista</span>
+            <span class="area-city">Oceanside</span>
+            <span class="area-city">Carlsbad</span>
+            <span class="area-city">Encinitas</span>
+            <span class="area-city">Solana Beach</span>
+            <span class="area-city">Del Mar</span>
+            <span class="area-city">Rancho Bernardo</span>
+            <span class="area-city">Poway</span>
+            <span class="area-city">San Diego</span>
+            <span class="area-city">& Surrounding Areas</span>
+          </div>
+          <div class="area-cta">
+            <a href="pricing.html" class="btn btn-white">📅 Schedule At My Location</a>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:32px;text-align:center;">
+            <div style="font-size:3rem;margin-bottom:16px;">🗺️</div>
+            <h3 style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:8px;">Not sure if we cover your area?</h3>
+            <p style="font-size:0.87rem;color:var(--gray);margin-bottom:20px;">Give us a call or text with your zip code — we'll let you know right away and can often schedule same-day.</p>
+            <a href="tel:+16198208047" class="btn btn-white" style="width:100%;display:block;">📞 (619) 820-8047</a>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+              <div style="font-size:0.78rem;color:var(--mid);">Typical travel range</div>
+              <div style="font-size:1rem;font-weight:700;color:var(--lgray);margin-top:4px;">Up to 30 miles from Escondido</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section section-alt" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Customer Reviews</div>
+        <h2>What People Are Saying</h2>
+        <p>Real reviews from real customers across North County San Diego.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"They came right to my house in Escondido — I didn't even have to leave! Fixed my iPhone screen in 45 minutes on my kitchen table. Incredible service."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">MR</div>
+            <div><div class="reviewer-name">Maria R.</div><div class="reviewer-loc">Escondido, CA</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"I was at work in San Marcos and they came to the parking lot during my lunch break. Screen was fixed before I finished eating. Unbelievable convenience."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">JT</div>
+            <div><div class="reviewer-name">James T.</div><div class="reviewer-loc">San Marcos, CA</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"The fact that they come to you makes this so much better than any repair shop. Fixed my daughter's iPad screen at our home in Vista. Fair price, great warranty."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AL</div>
+            <div><div class="reviewer-name">Angela L.</div><div class="reviewer-loc">Vista, CA</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVE CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Save Our Info</div>
+        <h2>Keep Us In Your Contacts</h2>
+        <p>The next time you crack a screen, we're one tap away. Save us now and you'll never have to search.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-save-grid">
+        <!-- iPhone mockup graphic -->
+        <div class="contact-phone-wrap">
+          <img src="contact-graphic.svg" alt="Device Saver San Diego iPhone contact card — (619) 820-8047" width="260" height="520" loading="lazy" />
+        </div>
+        <!-- Right side copy + download -->
+        <div class="contact-save-info">
+          <div class="contact-save-badge">📲 One-Tap Save</div>
+          <h3>Device Saver San Diego</h3>
+          <p class="contact-save-sub">Tap the button below to instantly add us to your iPhone or Android contacts — name, number, and website pre-filled.</p>
+          <a href="DeviceSaverSanDiego.vcf" download class="contact-vcf-btn">
+            <span class="vcf-btn-icon">👤</span>
+            <span>
+              <strong>Add to Contacts</strong>
+              <small>Tap to save (619) 820-8047</small>
+            </span>
+          </a>
+          <div class="contact-save-details">
+            <div class="csd-row">
+              <span class="csd-label">📞 Phone</span>
+              <a href="tel:+16198208047" class="csd-val">(619) 820-8047</a>
+            </div>
+            <div class="csd-row">
+              <span class="csd-label">🌐 Website</span>
+              <span class="csd-val">devicesaversandiego.com</span>
+            </div>
+            <div class="csd-row">
+              <span class="csd-label">🕐 Hours</span>
+              <span class="csd-val">7 days · 8AM – 8PM</span>
+            </div>
+            <div class="csd-row">
+              <span class="csd-label">🚗 Service</span>
+              <span class="csd-val">We come to you · North County SD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2>Common Questions</h2>
+        <p>Everything you need to know before booking a repair.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How long does a repair take?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Most screen repairs take <strong>30–60 minutes</strong> on the spot. We bring everything needed to your location — no drop-off, no waiting around. Controller stick upgrades usually take 45–60 minutes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you really come to me? How does that work?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes — we come to your home, office, parking lot, wherever works. You book a time through our pricing calculator, we confirm, then show up and do the repair right there. You don't have to go anywhere or be without your phone for days.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What's the difference between Budget, Standard, and Premium screens?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p><strong>Budget (LCD/aftermarket)</strong> — Works great, costs less. Brightness and color may differ slightly from original.<br><br>
+            <strong>Standard (OLED XO7)</strong> — High-quality aftermarket OLED. Excellent color and brightness, very close to the original feel.<br><br>
+            <strong>Premium (OEM)</strong> — Original Apple or manufacturer-grade screen. Identical to what came in your device. Best choice for ProMotion and True Tone on supported models.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What areas do you serve?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>We serve all of <strong>North County San Diego</strong> — including Carlsbad, Oceanside, Vista, San Marcos, Escondido, Encinitas, Solana Beach, Del Mar, Rancho Bernardo, and surrounding cities. Not sure if you're in range? Just call us at <a href="tel:+16198208047">(619) 820-8047</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is my repair covered by a warranty?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes — every repair comes with a <strong>90-day warranty against part defects</strong>. If a screen flickers, a battery drains unusually fast, or a stick upgrade acts up within 90 days of your repair, we'll come back and fix it free of charge. Physical damage after the repair (drops, cracks) is not covered.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Will fixing my screen erase my data?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>No. A screen replacement only involves swapping the display — your data, apps, and settings stay completely untouched. We recommend backing up before any repair as a general habit, but the repair itself won't affect your data.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What payment methods do you accept?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>We accept <strong>cash, Venmo, Cash App, Zelle, and all major credit/debit cards</strong>. Payment is collected after the repair is complete and you're satisfied.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can you fix a water-damaged phone?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Water damage repair depends on how severe it is and how quickly it was addressed. Give us a call at <a href="tel:+16198208047">(619) 820-8047</a> and describe what happened — we'll let you know if we can help and what to expect before committing to anything.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What's Hall Effect vs TMR for controller stick repair?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Both permanently eliminate stick drift by replacing the traditional potentiometer with magnetic sensing technology — meaning there's no physical contact and no wear over time.<br><br>
+            <strong>Hall Effect ($25/stick)</strong> — Proven magnetic technology, excellent durability, great value.<br><br>
+            <strong>TMR ($30/stick)</strong> — Next-generation magnetic sensing with even higher precision and consistency. The most durable option available. Recommended for heavy or competitive players.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WARRANTY -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Guarantee</div>
+        <h2>Backed by a 90-Day Warranty</h2>
+        <p>Every repair we do is covered against part defects for 90 days — no fine print, no hassle.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="warranty-grid">
+        <div class="warranty-card">
+          <div class="warranty-icon">🛡️</div>
+          <h4>90-Day Part Warranty</h4>
+          <p>If a part we installed fails within 90 days due to a defect, we replace it free of charge. Period.</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-icon">🔧</div>
+          <h4>Defect Coverage</h4>
+          <p>Screen flickering, touch issues, battery not holding charge — if it's the part, it's covered. No questions asked.</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-icon">📍</div>
+          <h4>We Come Back to You</h4>
+          <p>Warranty service is mobile too. If something needs fixing, we come back to your location — same as the original repair.</p>
+        </div>
+        <div class="warranty-card">
+          <div class="warranty-icon">✅</div>
+          <h4>What's Not Covered</h4>
+          <p>Physical damage after the repair (drops, cracks, water) falls outside warranty. Defects only — but that's what matters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="schedule-banner">
+        <div class="schedule-banner-icon">📅</div>
+        <div class="schedule-banner-text">
+          <h3>Ready to schedule your repair?</h3>
+          <p>Use our price calculator, pick your quality tier, and book a time — we'll come to you.</p>
+        </div>
+        <a href="pricing.html" class="btn btn-white" style="flex-shrink:0;">Get a Quote & Book</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Device<span>Saver</span> San Diego</div>
+          <p class="footer-desc">North County San Diego's mobile phone and electronics repair service. We come to you — home, office, or anywhere convenient. Backed by a 90-day warranty on every repair.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Services & Pricing</a></li>
+            <li><a href="pricing.html">Price Calculator</a></li>
+            <li><a href="#area">Service Area</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+16198208047">📞 (619) 820-8047</a></li>
+            <li><a href="mailto:info@devicesaversd.com">✉️ info@devicesaversd.com</a></li>
+            <li>📍 North County San Diego, CA</li>
+            <li>⏰ Mon–Sat: 9AM – 7PM</li>
+            <li>🚗 We come to you</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Device Saver San Diego · All Rights Reserved · Mobile Repair · North County San Diego</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING CALL BUTTON -->
+  <div class="float-cta">
+    <a href="tel:+16198208047">📞 Call Now</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
