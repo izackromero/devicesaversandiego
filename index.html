@@ -184,7 +184,7 @@
     .section-divider { width: 40px; height: 2px; background: var(--dark4); margin: 14px auto 0; border-radius: 2px; }
 
     /* SERVICES */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 340px)); gap: 16px; justify-content: center; }
     .service-card { background: var(--dark2); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 22px; transition: all 0.2s ease; position: relative; overflow: hidden; }
     .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--dark4), transparent); transition: background 0.3s; }
     .service-card:hover { border-color: var(--mid); background: var(--dark3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
