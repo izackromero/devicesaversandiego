@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule | Device Saver SD</title>
+  <style>
+    :root {
+      --black: #0a0a0a; --dark1: #111; --dark2: #1a1a1e; --dark3: #222; --dark4: #2c2c2c;
+      --mid: #444; --gray: #888; --lgray: #bbb; --border: #2e2e2e; --border2: #3a3a3a;
+      --white: #fff; --offwhite: #f0f0f0; --green: #5dde5d; --radius: 10px;
+      --blue: #3b82f6; --yellow: #fbbf24; --red: #ef4444; --purple: #a78bfa; --orange: #fb923c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark1); color: var(--offwhite); min-height: 100vh; }
+
+    /* NAV */
+    nav { background: rgba(10,10,10,.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo { font-size: 1rem; font-weight: 800; color: var(--white); }
+    .nav-logo span { color: var(--green); }
+    .nav-badge { font-size: 0.65rem; background: var(--dark3); border: 1px solid var(--border2); color: var(--gray); padding: 2px 8px; border-radius: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+
+    /* LAYOUT */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+
+    /* TOP BAR */
+    .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; gap: 12px; flex-wrap: wrap; }
+    .month-nav { display: flex; align-items: center; gap: 12px; }
+    .month-nav h2 { font-size: 1.4rem; font-weight: 700; min-width: 200px; text-align: center; }
+    .nav-btn { background: var(--dark3); border: 1px solid var(--border2); color: var(--lgray); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+    .nav-btn:hover { background: var(--dark4); color: var(--white); }
+    .today-btn { background: var(--dark3); border: 1px solid var(--border2); color: var(--lgray); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all .15s; }
+    .today-btn:hover { background: var(--dark4); color: var(--white); }
+
+    .view-tabs { display: flex; gap: 4px; background: var(--dark3); border: 1px solid var(--border2); border-radius: 8px; padding: 3px; }
+    .view-tab { padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; color: var(--gray); transition: all .15s; border: none; background: none; }
+    .view-tab.active { background: var(--dark1); color: var(--white); }
+
+    .add-btn { background: var(--green); color: #000; border: none; padding: 9px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: opacity .15s; white-space: nowrap; }
+    .add-btn:hover { opacity: .85; }
+
+    /* CALENDAR GRID */
+    .calendar-wrap { background: var(--dark2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .cal-header { display: grid; grid-template-columns: repeat(7, 1fr); border-bottom: 1px solid var(--border); }
+    .cal-header-cell { padding: 10px; text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+    .cal-cell { min-height: 100px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 6px; position: relative; cursor: pointer; transition: background .1s; }
+    .cal-cell:hover { background: rgba(255,255,255,.03); }
+    .cal-cell:nth-child(7n) { border-right: none; }
+    .cal-cell.other-month .cell-day { color: var(--mid); }
+    .cal-cell.today { background: rgba(93,222,93,.05); }
+    .cal-cell.today .cell-day { background: var(--green); color: #000; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    .cell-day { font-size: 0.8rem; font-weight: 600; color: var(--lgray); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+    .cell-blocked { background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(239,68,68,.06) 4px, rgba(239,68,68,.06) 8px); }
+    .cell-blocked::after { content: 'Blocked'; position: absolute; top: 6px; right: 6px; font-size: 0.55rem; font-weight: 700; color: var(--red); opacity: .7; text-transform: uppercase; letter-spacing: .5px; }
+
+    /* EVENT CHIPS */
+    .cell-events { display: flex; flex-direction: column; gap: 3px; }
+    .event-chip { padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 600; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .1s; }
+    .event-chip:hover { opacity: .8; }
+    .chip-confirmed { background: rgba(59,130,246,.25); color: #93c5fd; border-left: 2px solid #3b82f6; }
+    .chip-pending   { background: rgba(251,191,36,.2); color: #fde68a; border-left: 2px solid #fbbf24; }
+    .chip-completed { background: rgba(93,222,93,.15); color: #86efac; border-left: 2px solid #5dde5d; }
+    .chip-cancelled { background: rgba(239,68,68,.15); color: #fca5a5; border-left: 2px solid #ef4444; text-decoration: line-through; }
+    .chip-blocked   { background: rgba(239,68,68,.1); color: #fca5a5; font-style: italic; }
+
+    /* WEEK VIEW */
+    .week-view { display: none; }
+    .week-grid { display: grid; grid-template-columns: 56px repeat(7, 1fr); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--dark2); }
+    .week-time-col { display: flex; flex-direction: column; }
+    .week-time-slot { height: 50px; display: flex; align-items: flex-start; justify-content: flex-end; padding: 4px 8px 0 0; font-size: 0.65rem; color: var(--gray); border-bottom: 1px solid var(--border); }
+    .week-day-col { border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+    .week-day-header { padding: 10px 8px; text-align: center; border-bottom: 1px solid var(--border); }
+    .week-day-name { font-size: 0.65rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+    .week-day-num { font-size: 1.1rem; font-weight: 700; color: var(--lgray); margin-top: 2px; }
+    .week-day-num.today-num { background: var(--green); color: #000; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; margin: 2px auto 0; }
+    .week-slot { height: 50px; border-bottom: 1px solid var(--border); position: relative; cursor: pointer; transition: background .1s; }
+    .week-slot:hover { background: rgba(255,255,255,.03); }
+    .week-slot.blocked { background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(239,68,68,.07) 4px, rgba(239,68,68,.07) 8px); }
+    .week-event { position: absolute; left: 2px; right: 2px; border-radius: 4px; padding: 2px 4px; font-size: 0.6rem; font-weight: 600; overflow: hidden; cursor: pointer; z-index: 2; }
+
+    /* LIST VIEW */
+    .list-view { display: none; }
+    .list-section { margin-bottom: 24px; }
+    .list-section-title { font-size: 0.7rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; padding-left: 4px; }
+    .list-item { background: var(--dark2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: background .1s; }
+    .list-item:hover { background: var(--dark3); }
+    .list-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .list-main { flex: 1; min-width: 0; }
+    .list-name { font-weight: 700; font-size: 0.9rem; }
+    .list-meta { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+    .list-time { font-size: 0.8rem; color: var(--lgray); font-weight: 600; flex-shrink: 0; text-align: right; }
+    .list-status { font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 20px; flex-shrink: 0; }
+
+    /* MODALS */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(4px); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity .2s; }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal { background: var(--dark2); border: 1px solid var(--border2); border-radius: 14px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; }
+    .modal-header { padding: 20px 20px 0; display: flex; align-items: center; justify-content: space-between; }
+    .modal-title { font-size: 1.1rem; font-weight: 700; }
+    .modal-close { background: var(--dark3); border: 1px solid var(--border2); color: var(--gray); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+    .modal-close:hover { background: var(--dark4); color: var(--white); }
+    .modal-body { padding: 20px; }
+    .form-row { margin-bottom: 14px; }
+    .form-label { font-size: 0.75rem; font-weight: 600; color: var(--gray); margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: .5px; }
+    .form-input, .form-select, .form-textarea { width: 100%; background: var(--dark3); border: 1px solid var(--border2); color: var(--offwhite); padding: 10px 12px; border-radius: 8px; font-size: 0.875rem; font-family: inherit; transition: border-color .15s; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--green); }
+    .form-select option { background: var(--dark3); }
+    .form-textarea { resize: vertical; min-height: 70px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-primary { flex: 1; background: var(--green); color: #000; border: none; padding: 11px; border-radius: 8px; font-size: 0.875rem; font-weight: 700; cursor: pointer; transition: opacity .15s; }
+    .btn-primary:hover { opacity: .85; }
+    .btn-secondary { flex: 1; background: var(--dark3); border: 1px solid var(--border2); color: var(--lgray); padding: 11px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all .15s; }
+    .btn-secondary:hover { background: var(--dark4); color: var(--white); }
+    .btn-danger { background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; padding: 11px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all .15s; }
+    .btn-danger:hover { background: rgba(239,68,68,.25); }
+
+    /* DETAIL MODAL */
+    .detail-field { display: flex; gap: 12px; margin-bottom: 12px; }
+    .detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .detail-label { font-size: 0.7rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
+    .detail-value { font-size: 0.9rem; color: var(--offwhite); margin-top: 2px; }
+    .status-select-wrap { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .status-btn { padding: 7px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; cursor: pointer; border: 1px solid transparent; transition: all .15s; }
+    .status-btn:hover { opacity: .8; }
+    .status-btn.active { box-shadow: 0 0 0 2px var(--white); }
+    .sb-pending   { background: rgba(251,191,36,.2); border-color: rgba(251,191,36,.4); color: #fde68a; }
+    .sb-confirmed { background: rgba(59,130,246,.2); border-color: rgba(59,130,246,.4); color: #93c5fd; }
+    .sb-completed { background: rgba(93,222,93,.15); border-color: rgba(93,222,93,.35); color: #86efac; }
+    .sb-cancelled { background: rgba(239,68,68,.15); border-color: rgba(239,68,68,.35); color: #fca5a5; }
+
+    /* BLOCK MODAL */
+    .block-option { background: var(--dark3); border: 1px solid var(--border2); border-radius: 8px; padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all .15s; }
+    .block-option:hover, .block-option.selected { border-color: var(--red); background: rgba(239,68,68,.08); }
+    .block-option-label { font-weight: 600; font-size: 0.85rem; }
+    .block-option-desc { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+
+    /* LEGEND */
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--gray); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* STATS */
+    .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+    .stat-card { background: var(--dark2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
+    .stat-num { font-size: 1.5rem; font-weight: 800; }
+    .stat-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+
+    /* TOAST */
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark3); border: 1px solid var(--border2); color: var(--white); padding: 12px 20px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; z-index: 9999; transition: transform .3s ease; white-space: nowrap; }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 640px) {
+      .cal-cell { min-height: 60px; padding: 4px; }
+      .cell-day { font-size: 0.7rem; }
+      .event-chip { font-size: 0.55rem; padding: 1px 4px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .month-nav h2 { font-size: 1.1rem; min-width: 160px; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">Device <span>Saver</span> SD</div>
+    <div class="nav-badge">Schedule</div>
+  </div>
+  <div class="nav-right">
+    <button class="add-btn" onclick="openAddModal()">+ Add Job</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="statsBar"></div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="month-nav">
+      <button class="nav-btn" onclick="prevPeriod()">&#8249;</button>
+      <h2 id="periodLabel"></h2>
+      <button class="nav-btn" onclick="nextPeriod()">&#8250;</button>
+      <button class="today-btn" onclick="goToToday()">Today</button>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <div class="view-tabs">
+        <button class="view-tab active" onclick="setView('month')" id="tab-month">Month</button>
+        <button class="view-tab" onclick="setView('week')" id="tab-week">Week</button>
+        <button class="view-tab" onclick="setView('list')" id="tab-list">List</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#fbbf24"></div> Pending</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div> Confirmed</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5dde5d"></div> Completed</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> Cancelled</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444;opacity:.4"></div> Blocked</div>
+  </div>
+
+  <!-- Month View -->
+  <div id="monthView">
+    <div class="calendar-wrap">
+      <div class="cal-header">
+        <div class="cal-header-cell">Sun</div>
+        <div class="cal-header-cell">Mon</div>
+        <div class="cal-header-cell">Tue</div>
+        <div class="cal-header-cell">Wed</div>
+        <div class="cal-header-cell">Thu</div>
+        <div class="cal-header-cell">Fri</div>
+        <div class="cal-header-cell">Sat</div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <!-- Week View -->
+  <div id="weekView" style="display:none;">
+    <div class="week-grid" id="weekGrid"></div>
+  </div>
+
+  <!-- List View -->
+  <div id="listView" style="display:none;">
+    <div id="listContent"></div>
+  </div>
+
+</div>
+
+<!-- ADD/EDIT JOB MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="addModalTitle">Add Job</div>
+      <button class="modal-close" onclick="closeAddModal()">Ã</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editJobId" />
+      <div class="form-row">
+        <label class="form-label">Customer Name *</label>
+        <input class="form-input" id="fName" placeholder="John Smith" />
+      </div>
+      <div class="form-row-2">
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Phone</label>
+          <input class="form-input" id="fPhone" placeholder="(619) 555-1234" />
+        </div>
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Date *</label>
+          <input class="form-input" id="fDate" type="date" />
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Time</label>
+          <select class="form-select" id="fTime">
+            <option value="Morning (8amâ12pm)">Morning (8amâ12pm)</option>
+            <option value="Afternoon (12pmâ5pm)">Afternoon (12pmâ5pm)</option>
+            <option value="Evening (5pmâ8pm)">Evening (5pmâ8pm)</option>
+            <option value="Custom">Custom</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Status</label>
+          <select class="form-select" id="fStatus">
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Device</label>
+        <input class="form-input" id="fDevice" placeholder="iPhone 15 Pro, iPad Air, etc." />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Service Address</label>
+        <input class="form-input" id="fAddress" placeholder="123 Main St, Carlsbad" />
+      </div>
+      <div class="form-row-2">
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Repair Type</label>
+          <select class="form-select" id="fRepair">
+            <option>Screen Replacement</option>
+            <option>Battery Replacement</option>
+            <option>Charging Port</option>
+            <option>Speaker / Mic</option>
+            <option>Camera Repair</option>
+            <option>Water Damage</option>
+            <option>Back Glass</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin:0">
+          <label class="form-label">Est. Total</label>
+          <input class="form-input" id="fTotal" placeholder="$0.00" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Notes</label>
+        <textarea class="form-textarea" id="fNotes" placeholder="Any notes..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeAddModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveJob()">Save Job</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="detailTitle">Job Details</div>
+      <button class="modal-close" onclick="closeDetailModal()">Ã</button>
+    </div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- BLOCK DATE MODAL -->
+<div class="modal-overlay" id="blockModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Block Availability</div>
+      <button class="modal-close" onclick="closeBlockModal()">Ã</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <label class="form-label">Date</label>
+        <input class="form-input" id="bDate" type="date" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Block Type</label>
+        <div>
+          <div class="block-option selected" id="bopt-full" onclick="selectBlockType('full')">
+            <div class="block-option-label">Full Day Off</div>
+            <div class="block-option-desc">Mark entire day as unavailable</div>
+          </div>
+          <div class="block-option" id="bopt-morning" onclick="selectBlockType('morning')">
+            <div class="block-option-label">Morning Blocked (8amâ12pm)</div>
+            <div class="block-option-desc">Afternoon still available</div>
+          </div>
+          <div class="block-option" id="bopt-afternoon" onclick="selectBlockType('afternoon')">
+            <div class="block-option-label">Afternoon Blocked (12pmâ5pm)</div>
+            <div class="block-option-desc">Morning still available</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Reason (optional)</label>
+        <input class="form-input" id="bReason" placeholder="Personal, vacation, etc." />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeBlockModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveBlock()" style="background:#ef4444;">Block Day</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CELL CLICK MENU -->
+<div class="modal-overlay" id="cellMenu">
+  <div class="modal" style="max-width:300px;">
+    <div class="modal-header">
+      <div class="modal-title" id="cellMenuDate"></div>
+      <button class="modal-close" onclick="closeCellMenu()">Ã</button>
+    </div>
+    <div class="modal-body">
+      <button class="btn-primary" style="width:100%;margin-bottom:10px;" onclick="addFromCell()">+ Add Job This Day</button>
+      <button class="btn-secondary" style="width:100%;margin-bottom:10px;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);color:#fca5a5;" onclick="blockFromCell()">Block This Day</button>
+      <button class="btn-secondary" style="width:100%;" id="unblockBtn" onclick="unblockCell()" style="display:none;">Unblock This Day</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// âââ STATE âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+let jobs = JSON.parse(localStorage.getItem('dss_jobs') || '[]');
+let blocks = JSON.parse(localStorage.getItem('dss_blocks') || '[]');
+let currentView = 'month';
+let currentDate = new Date();
+let selectedCellDate = null;
+
+const STATUS_COLORS = {
+  pending:   '#fbbf24',
+  confirmed: '#3b82f6',
+  completed: '#5dde5d',
+  cancelled: '#ef4444'
+};
+
+// âââ PERSIST âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function save() {
+  localStorage.setItem('dss_jobs', JSON.stringify(jobs));
+  localStorage.setItem('dss_blocks', JSON.stringify(blocks));
+}
+
+// âââ ID ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+
+// âââ DATE UTILS ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function dateKey(d) {
+  const dt = typeof d === 'string' ? new Date(d + 'T12:00:00') : d;
+  return dt.toISOString().slice(0, 10);
+}
+function today() { return dateKey(new Date()); }
+function fmtDate(iso) {
+  const d = new Date(iso + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+// âââ STATS âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function renderStats() {
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const monthEnd   = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+  const monthJobs = jobs.filter(j => {
+    const d = new Date(j.date + 'T12:00:00');
+    return d >= monthStart && d <= monthEnd;
+  });
+  const upcoming = jobs.filter(j => j.date >= today() && j.status !== 'cancelled' && j.status !== 'completed').length;
+  const monthRevenue = monthJobs.filter(j => j.status === 'completed')
+    .reduce((s, j) => s + parseFloat((j.total || '').replace(/[^0-9.]/g, '') || 0), 0);
+
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat-card"><div class="stat-num" style="color:var(--blue)">${upcoming}</div><div class="stat-label">Upcoming</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--yellow)">${monthJobs.filter(j=>j.status==='pending').length}</div><div class="stat-label">Pending</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--green)">${monthJobs.filter(j=>j.status==='completed').length}</div><div class="stat-label">Done This Month</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--green)">$${monthRevenue.toFixed(0)}</div><div class="stat-label">Revenue (Month)</div></div>
+  `;
+}
+
+// âââ VIEWS âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function setView(v) {
+  currentView = v;
+  ['month','week','list'].forEach(x => {
+    document.getElementById(x + 'View').style.display = x === v ? 'block' : 'none';
+    document.getElementById('tab-' + x).classList.toggle('active', x === v);
+  });
+  render();
+}
+
+function render() {
+  renderStats();
+  updatePeriodLabel();
+  if (currentView === 'month') renderMonth();
+  if (currentView === 'week')  renderWeek();
+  if (currentView === 'list')  renderList();
+}
+
+function prevPeriod() {
+  if (currentView === 'month') currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+  else if (currentView === 'week') currentDate = new Date(currentDate.getTime() - 7 * 86400000);
+  else currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+  render();
+}
+function nextPeriod() {
+  if (currentView === 'month') currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+  else if (currentView === 'week') currentDate = new Date(currentDate.getTime() + 7 * 86400000);
+  else currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+  render();
+}
+function goToToday() {
+  currentDate = new Date();
+  render();
+}
+function updatePeriodLabel() {
+  const el = document.getElementById('periodLabel');
+  if (currentView === 'week') {
+    const weekStart = getWeekStart(currentDate);
+    const weekEnd = new Date(weekStart.getTime() + 6 * 86400000);
+    const s = weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const e = weekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    el.textContent = s + ' â ' + e;
+  } else {
+    el.textContent = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  }
+}
+
+// âââ MONTH VIEW âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function renderMonth() {
+  const year = currentDate.getFullYear(), month = currentDate.getMonth();
+  const first = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInPrev = new Date(year, month, 0).getDate();
+  const grid = document.getElementById('calGrid');
+  const todayStr = today();
+  let html = '';
+  const total = Math.ceil((first + daysInMonth) / 7) * 7;
+
+  for (let i = 0; i < total; i++) {
+    let day, isCurrentMonth = true, iso;
+    if (i < first) {
+      day = daysInPrev - first + i + 1;
+      iso = dateKey(new Date(year, month - 1, day));
+      isCurrentMonth = false;
+    } else if (i >= first + daysInMonth) {
+      day = i - first - daysInMonth + 1;
+      iso = dateKey(new Date(year, month + 1, day));
+      isCurrentMonth = false;
+    } else {
+      day = i - first + 1;
+      iso = dateKey(new Date(year, month, day));
+    }
+
+    const isToday = iso === todayStr;
+    const dayJobs = jobs.filter(j => j.date === iso);
+    const blockInfo = blocks.find(b => b.date === iso);
+    const isBlocked = !!blockInfo;
+
+    let classes = 'cal-cell';
+    if (!isCurrentMonth) classes += ' other-month';
+    if (isToday) classes += ' today';
+    if (isBlocked) classes += ' cell-blocked';
+
+    let eventsHtml = '';
+    dayJobs.slice(0, 3).forEach(j => {
+      eventsHtml += `<div class="event-chip chip-${j.status}" onclick="event.stopPropagation();openDetail('${j.id}')">${j.name}</div>`;
+    });
+    if (dayJobs.length > 3) eventsHtml += `<div style="font-size:.6rem;color:var(--gray);padding:1px 4px">+${dayJobs.length - 3} more</div>`;
+
+    const dayNumHtml = `<div class="cell-day">${day}</div>`;
+    html += `<div class="${classes}" data-iso="${iso}" onclick="onCellClick('${iso}')">
+      ${dayNumHtml}
+      <div class="cell-events">${eventsHtml}</div>
+    </div>`;
+  }
+  grid.innerHTML = html;
+}
+
+// âââ WEEK VIEW ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function getWeekStart(d) {
+  const day = d.getDay();
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
+}
+
+function renderWeek() {
+  const weekStart = getWeekStart(currentDate);
+  const todayStr = today();
+  const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  const hourLabels = ['8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+
+  let headersHtml = '<div class="week-day-col"><div style="border-bottom:1px solid var(--border);height:60px;"></div>';
+  hours.forEach((h, i) => {
+    headersHtml += `<div class="week-time-slot">${hourLabels[i]}</div>`;
+  });
+  headersHtml += '</div>';
+
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let colsHtml = '';
+  for (let d = 0; d < 7; d++) {
+    const date = new Date(weekStart.getTime() + d * 86400000);
+    const iso = dateKey(date);
+    const isToday = iso === todayStr;
+    const dayJobs = jobs.filter(j => j.date === iso && j.status !== 'cancelled');
+    const blockInfo = blocks.find(b => b.date === iso);
+
+    let headerHtml = `<div class="week-day-header">
+      <div class="week-day-name">${days[d]}</div>
+      <div class="week-day-num ${isToday ? 'today-num' : ''}">${date.getDate()}</div>
+    </div>`;
+
+    let slotsHtml = '';
+    hours.forEach(h => {
+      const isBlocked = blockInfo && (blockInfo.type === 'full' || (blockInfo.type === 'morning' && h < 12) || (blockInfo.type === 'afternoon' && h >= 12 && h < 17));
+      slotsHtml += `<div class="week-slot${isBlocked ? ' blocked' : ''}" onclick="onCellClick('${iso}')">`;
+      dayJobs.forEach(j => {
+        const slotHour = j.time && j.time.includes('Morning') ? 8 : j.time && j.time.includes('Afternoon') ? 12 : j.time && j.time.includes('Evening') ? 17 : 8;
+        if (h === slotHour) {
+          slotsHtml += `<div class="week-event chip-${j.status}" onclick="event.stopPropagation();openDetail('${j.id}')">${j.name}</div>`;
+        }
+      });
+      slotsHtml += '</div>';
+    });
+    colsHtml += `<div class="week-day-col">${headerHtml}${slotsHtml}</div>`;
+  }
+
+  document.getElementById('weekGrid').innerHTML = headersHtml + colsHtml;
+}
+
+// âââ LIST VIEW ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function renderList() {
+  const todayStr = today();
+  const upcoming = jobs.filter(j => j.date >= todayStr && j.status !== 'cancelled' && j.status !== 'completed')
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const past = jobs.filter(j => j.date < todayStr || j.status === 'completed' || j.status === 'cancelled')
+    .sort((a, b) => b.date.localeCompare(a.date)).slice(0, 20);
+
+  const renderItem = j => `
+    <div class="list-item" onclick="openDetail('${j.id}')">
+      <div class="list-dot" style="background:${STATUS_COLORS[j.status]}"></div>
+      <div class="list-main">
+        <div class="list-name">${j.name}</div>
+        <div class="list-meta">${j.device || 'Device unknown'} Â· ${j.repair || 'Repair unknown'}</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;">
+        <div class="list-time">${fmtDate(j.date)}</div>
+        <div style="font-size:.7rem;color:var(--gray);margin-top:2px;">${j.time || ''}</div>
+      </div>
+    </div>
+  `;
+
+  let html = '';
+  if (upcoming.length) {
+    html += `<div class="list-section"><div class="list-section-title">Upcoming (${upcoming.length})</div>${upcoming.map(renderItem).join('')}</div>`;
+  } else {
+    html += `<div class="list-section"><div class="list-section-title">Upcoming</div><div style="color:var(--gray);font-size:.85rem;padding:12px 4px;">No upcoming jobs scheduled.</div></div>`;
+  }
+  if (past.length) {
+    html += `<div class="list-section"><div class="list-section-title">Recent / Past</div>${past.map(renderItem).join('')}</div>`;
+  }
+
+  document.getElementById('listContent').innerHTML = html;
+}
+
+// âââ CELL CLICK âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function onCellClick(iso) {
+  selectedCellDate = iso;
+  const d = new Date(iso + 'T12:00:00');
+  document.getElementById('cellMenuDate').textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  const blockInfo = blocks.find(b => b.date === iso);
+  const ub = document.getElementById('unblockBtn');
+  ub.style.display = blockInfo ? 'block' : 'none';
+  document.getElementById('cellMenu').classList.add('open');
+}
+function closeCellMenu() { document.getElementById('cellMenu').classList.remove('open'); }
+function addFromCell() {
+  closeCellMenu();
+  openAddModal();
+  document.getElementById('fDate').value = selectedCellDate;
+}
+function blockFromCell() {
+  closeCellMenu();
+  openBlockModal(selectedCellDate);
+}
+function unblockCell() {
+  blocks = blocks.filter(b => b.date !== selectedCellDate);
+  save(); closeCellMenu(); render();
+  showToast('Day unblocked');
+}
+
+// âââ ADD/EDIT JOB âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function openAddModal(jobId) {
+  const modal = document.getElementById('addModal');
+  const title = document.getElementById('addModalTitle');
+  if (jobId) {
+    const j = jobs.find(x => x.id === jobId);
+    if (!j) return;
+    title.textContent = 'Edit Job';
+    document.getElementById('editJobId').value = j.id;
+    document.getElementById('fName').value = j.name || '';
+    document.getElementById('fPhone').value = j.phone || '';
+    document.getElementById('fDate').value = j.date || '';
+    document.getElementById('fTime').value = j.time || 'Morning (8amâ12pm)';
+    document.getElementById('fStatus').value = j.status || 'pending';
+    document.getElementById('fDevice').value = j.device || '';
+    document.getElementById('fAddress').value = j.address || '';
+    document.getElementById('fRepair').value = j.repair || 'Screen Replacement';
+    document.getElementById('fTotal').value = j.total || '';
+    document.getElementById('fNotes').value = j.notes || '';
+  } else {
+    title.textContent = 'Add Job';
+    document.getElementById('editJobId').value = '';
+    document.getElementById('fName').value = '';
+    document.getElementById('fPhone').value = '';
+    document.getElementById('fDate').value = dateKey(new Date());
+    document.getElementById('fTime').value = 'Morning (8amâ12pm)';
+    document.getElementById('fStatus').value = 'pending';
+    document.getElementById('fDevice').value = '';
+    document.getElementById('fAddress').value = '';
+    document.getElementById('fRepair').value = 'Screen Replacement';
+    document.getElementById('fTotal').value = '';
+    document.getElementById('fNotes').value = '';
+  }
+  modal.classList.add('open');
+}
+function closeAddModal() { document.getElementById('addModal').classList.remove('open'); }
+
+function saveJob() {
+  const name = document.getElementById('fName').value.trim();
+  const date = document.getElementById('fDate').value;
+  if (!name || !date) { showToast('Name and date are required'); return; }
+  const existingId = document.getElementById('editJobId').value;
+  const job = {
+    id: existingId || uid(),
+    name, date,
+    phone:   document.getElementById('fPhone').value.trim(),
+    time:    document.getElementById('fTime').value,
+    status:  document.getElementById('fStatus').value,
+    device:  document.getElementById('fDevice').value.trim(),
+    address: document.getElementById('fAddress').value.trim(),
+    repair:  document.getElementById('fRepair').value,
+    total:   document.getElementById('fTotal').value.trim(),
+    notes:   document.getElementById('fNotes').value.trim(),
+    createdAt: existingId ? (jobs.find(j => j.id === existingId) || {}).createdAt : new Date().toISOString()
+  };
+  if (existingId) {
+    const idx = jobs.findIndex(j => j.id === existingId);
+    jobs[idx] = job;
+    showToast('Job updated');
+  } else {
+    jobs.push(job);
+    showToast('Job added');
+  }
+  save(); closeAddModal(); closeDetailModal(); render();
+}
+
+// âââ DETAIL VIEW ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function openDetail(id) {
+  const j = jobs.find(x => x.id === id);
+  if (!j) return;
+  const statuses = ['pending','confirmed','completed','cancelled'];
+  const body = document.getElementById('detailBody');
+  document.getElementById('detailTitle').textContent = j.name;
+  body.innerHTML = `
+    <div class="detail-field"><div class="detail-icon">ð±</div><div><div class="detail-label">Device & Repair</div><div class="detail-value">${j.device || 'Unknown'} â ${j.repair || 'Unknown'}</div></div></div>
+    <div class="detail-field"><div class="detail-icon">ð</div><div><div class="detail-label">Appointment</div><div class="detail-value">${fmtDate(j.date)} Â· ${j.time || 'Time TBD'}</div></div></div>
+    ${j.phone ? `<div class="detail-field"><div class="detail-icon">ð</div><div><div class="detail-label">Phone</div><div class="detail-value"><a href="tel:${j.phone}" style="color:var(--green)">${j.phone}</a></div></div></div>` : ''}
+    ${j.address ? `<div class="detail-field"><div class="detail-icon">ðM</div><div><div class="detail-label">Address</div><div class="detail-value">${j.address}</div></div></div>` : ''}
+    ${j.total ? `<div class="detail-field"><div class="detail-icon">ð°</div><div><div class="detail-label">Estimated Total</div><div class="detail-value">${j.total}</div></div></div>` : ''}
+    ${j.notes ? `<div class="detail-field"><div class="detail-icon">ð</div><div><div class="detail-label">Notes</div><div class="detail-value">${j.notes}</div></div></div>` : ''}
+    <div class="status-select-wrap">
+      ${statuses.map(s => `<button class="status-btn sb-${s}${j.status === s ? ' active' : ''}" onclick="setStatus('${id}','${s}')">${s.charAt(0).toUpperCase() + s.slice(1)}</button>`).join('')}
+    </div>
+    <div class="modal-actions" style="margin-top:14px;">
+      <button class="btn-danger" onclick="deleteJob('${id}')">Delete</button>
+      <button class="btn-secondary" onclick="closeDetailModal();openAddModal('${id}')">Edit</button>
+    </div>
+  `;
+  document.getElementById('detailModal').classList.add('open');
+}
+function closeDetailModal() { document.getElementById('detailModal').classList.remove('open'); }
+
+function setStatus(id, status) {
+  const j = jobs.find(x => x.id === id);
+  if (!j) return;
+  j.status = status;
+  save(); openDetail(id); render();
+  showToast('Status â ' + status);
+}
+
+function deleteJob(id) {
+  if (!confirm('Delete this job?')) return;
+  jobs = jobs.filter(j => j.id !== id);
+  save(); closeDetailModal(); render();
+  showToast('Job deleted');
+}
+
+// âââ BLOCK âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+let selectedBlockType = 'full';
+function selectBlockType(t) {
+  selectedBlockType = t;
+  ['full','morning','afternoon'].forEach(x => {
+    document.getElementById('bopt-' + x).classList.toggle('selected', x === t);
+  });
+}
+function openBlockModal(dateIso) {
+  document.getElementById('bDate').value = dateIso || dateKey(new Date());
+  selectedBlockType = 'full';
+  ['full','morning','afternoon'].forEach(x => document.getElementById('bopt-' + x).classList.toggle('selected', x === 'full'));
+  document.getElementById('bReason').value = '';
+  document.getElementById('blockModal').classList.add('open');
+}
+function closeBlockModal() { document.getElementById('blockModal').classList.remove('open'); }
+function saveBlock() {
+  const date = document.getElementById('bDate').value;
+  if (!date) { showToast('Pick a date'); return; }
+  blocks = blocks.filter(b => b.date !== date);
+  blocks.push({ date, type: selectedBlockType, reason: document.getElementById('bReason').value.trim() });
+  save(); closeBlockModal(); render();
+  showToast('Day blocked');
+}
+
+// âââ TOAST âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// âââ CLOSE ON OVERLAY CLICK ââââââââââââââââââââââââââââââââââââââââââââââââââ
+['addModal','detailModal','blockModal','cellMenu'].forEach(id => {
+  document.getElementById(id).addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+});
+
+// âââ KEYBOARD ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['addModal','detailModal','blockModal','cellMenu'].forEach(id => document.getElementById(id).classList.remove('open'));
+  }
+});
+
+// âââ SEED DEMO DATA (only if empty) ââââââââââââââââââââââââââââââââââââââââââ
+if (jobs.length === 0) {
+  const t = today();
+  const d1 = new Date(); d1.setDate(d1.getDate() + 1);
+  const d2 = new Date(); d2.setDate(d2.getDate() + 3);
+  const d3 = new Date(); d3.setDate(d3.getDate() - 2);
+  jobs = [
+    { id: uid(), name: 'Sample: Alex R.', date: dateKey(d1), phone: '(760) 555-0101', time: 'Morning (8amâ12pm)', status: 'confirmed', device: 'iPhone 15 Pro', repair: 'Screen Replacement', address: '500 Carlsbad Village Dr', total: '$189.00', notes: 'Demo job â feel free to delete', createdAt: new Date().toISOString() },
+    { id: uid(), name: 'Sample: Maria L.', date: dateKey(d2), phone: '(760) 555-0202', time: 'Afternoon (12pmâ5pm)', status: 'pending', device: 'Samsung S23', repair: 'Screen Replacement', address: '2501 El Camino Real, Oceanside', total: '$145.00', notes: '', createdAt: new Date().toISOString() },
+    { id: uid(), name: 'Sample: James T.', date: dateKey(d3), phone: '(619) 555-0303', time: 'Morning (8amâ12pm)', status: 'completed', device: 'iPad Air 5', repair: 'Battery Replacement', address: '123 Grand Ave, Escondido', total: '$89.00', notes: '', createdAt: new Date().toISOString() },
+  ];
+  save();
+}
+
+// âââ INIT âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+render();
+</script>
+</body>
+</html>
