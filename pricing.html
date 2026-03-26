@@ -758,10 +758,39 @@ function submitBooking() {
   btn.disabled = true;
   btn.textContent = 'Sending…';
 
-  // Simulate sending (replace with a real API call or mailto: if needed)
-  setTimeout(() => {
-    showSuccess({ name, phone, email, address, date, slot: selectedSlot, notes });
-  }, 900);
+  // Send to Formspree
+  const slotLabels = { morning:'Morning (8am–12pm)', afternoon:'Afternoon (12pm–5pm)', evening:'Evening (5pm–8pm)' };
+  fetch('https://formspree.io/f/xreogkrp', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name,
+      phone,
+      email,
+      address,
+      date,
+      time_slot: slotLabels[selectedSlot] || selectedSlot,
+      notes: notes || 'None',
+      device: bookingDetails.model || '',
+      repair_type: 'Screen Replacement',
+      quality_tier: bookingDetails.tierLabel || '',
+      estimated_total: bookingDetails.total ? '$' + bookingDetails.total.toFixed(2) : ''
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      showSuccess({ name, phone, email, address, date, slot: selectedSlot, notes });
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Confirm Booking Request →';
+      alert('Something went wrong. Please call us at (619) 820-8047 to book your repair.');
+    }
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Confirm Booking Request →';
+    alert('Network error. Please call us at (619) 820-8047 to book your repair.');
+  });
 }
 
 function showSuccess(data) {
