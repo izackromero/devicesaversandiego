@@ -97,6 +97,12 @@
     .stock-out { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:var(--mid); }
     .book-btn.out-of-stock { opacity:0.4; cursor:not-allowed; pointer-events:none; }
 
+    /* WARRANTY BADGES */
+    .warranty-badge { display:inline-flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:700; padding:4px 10px; border-radius:20px; margin-bottom:12px; }
+    .no-warranty       { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:var(--gray); }
+    .standard-warranty { background:rgba(255,193,7,0.1);   border:1px solid rgba(255,193,7,0.3);   color:#ffc107; }
+    .lifetime-warranty { background:rgba(93,222,93,0.1);   border:1px solid rgba(93,222,93,0.25);  color:#5dde5d; }
+
     /* DEVICE TYPE TABS */
     .device-tabs { display:flex; gap:10px; flex-wrap:wrap; }
     .device-tab { flex:1; min-width:120px; padding:16px 20px; background:var(--dark2); border:1.5px solid var(--border); border-radius:var(--radius); cursor:pointer; text-align:center; transition:all 0.2s; }
@@ -341,6 +347,10 @@
           <div class="repair-summary-label">Repair Type</div>
           <div class="repair-summary-val">Screen Replacement</div>
         </div>
+        <div id="summaryDistFeeRow" style="display:none;">
+          <div class="repair-summary-label">Travel Fee</div>
+          <div class="repair-summary-val" id="summaryDistFee">—</div>
+        </div>
         <div class="repair-summary-price">
           <div class="repair-summary-label">Total Price</div>
           <div class="total-price" id="summaryTotal">—</div>
@@ -431,7 +441,7 @@
 
 <div class="container">
   <div class="pricing-note">
-    <strong>How pricing works:</strong> Part costs are sourced from MobileSentrix wholesale pricing. A flat labor fee of <strong id="laborNote">$60</strong> is added to every screen repair. All prices include a <strong>90-day warranty</strong> on parts and labor. Final quote confirmed after free device diagnostic.
+    <strong>How pricing works:</strong> Part costs are sourced from MobileSentrix wholesale pricing. A flat labor fee of <strong id="laborNote">$70</strong> is added to every screen repair. Warranty varies by part tier: Economy (no warranty), Standard (90-day), Premium (lifetime). Final quote confirmed after free device diagnostic.
   </div>
 </div>
 
@@ -449,8 +459,77 @@
 
 <script>
 // ─── PRICING DATA ───────────────────────────────────────────────────────────
-const IPHONE_LABOR = 60;
+const IPHONE_LABOR = 70;
 const IPAD_LABOR   = 80;
+
+// ─── DISTANCE FEE ───────────────────────────────────────────────────────────
+// Ground zero: The Shoppes at Carlsbad
+const SHOPPES_LAT =  33.1581;
+const SHOPPES_LNG = -117.3506;
+const FREE_MILES  =  5;
+const FEE_PER_MILE = 1;
+
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const R = 3958.8; // Earth radius in miles
+  const toRad = d => d * Math.PI / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a = Math.sin(dLat/2)**2 +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+            Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function calcTravelFee(miles) {
+  if (miles <= FREE_MILES) return 0;
+  return Math.ceil((miles - FREE_MILES) * FEE_PER_MILE);
+}
+
+async function estimateTravelFee(address) {
+  const row  = document.getElementById('summaryDistFeeRow');
+  const val  = document.getElementById('summaryDistFee');
+  if (!address) { row.style.display = 'none'; return; }
+  row.style.display = '';
+  val.textContent = 'Calculating…';
+  try {
+    const resp = await fetch(
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address + ', North County San Diego, CA')}&format=json&limit=1`,
+      { headers: { 'Accept-Language': 'en-US' } }
+    );
+    const results = await resp.json();
+    if (!results.length) {
+      val.textContent = 'Address not found — confirmed at arrival';
+      val.style.color = 'var(--gray)';
+      bookingDetails.distanceFee = null;
+      return;
+    }
+    const miles = haversineDistance(SHOPPES_LAT, SHOPPES_LNG,
+                                    parseFloat(results[0].lat),
+                                    parseFloat(results[0].lon));
+    const fee = calcTravelFee(miles);
+    bookingDetails.distanceFee  = fee;
+    bookingDetails.distanceMiles = miles;
+    if (fee === 0) {
+      val.textContent = `${miles.toFixed(1)} mi — Free (within 5 mi)`;
+      val.style.color = '#5dde5d';
+    } else {
+      val.textContent = `${miles.toFixed(1)} mi — +$${fee} travel fee`;
+      val.style.color = '#ffc107';
+    }
+    updateSummaryTotal();
+  } catch (e) {
+    val.textContent = 'Could not calculate — confirmed at arrival';
+    val.style.color = 'var(--gray)';
+    bookingDetails.distanceFee = null;
+  }
+}
+
+function updateSummaryTotal() {
+  const base = bookingDetails.baseTotal || 0;
+  const fee  = bookingDetails.distanceFee || 0;
+  bookingDetails.total = base + fee;
+  document.getElementById('summaryTotal').textContent = fmt(base + fee);
+}
 
 // null = not available for that tier
 const iphoneData = {
@@ -552,6 +631,13 @@ buildModelOptions('iphone');
 document.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('fieldDate').min = today;
+
+  // Auto-estimate travel fee when address is entered
+  document.getElementById('fieldAddress').addEventListener('blur', function() {
+    if (this.value.trim() && bookingDetails.baseTotal) {
+      estimateTravelFee(this.value.trim());
+    }
+  });
 });
 // Also set it immediately in case DOMContentLoaded already fired
 const today = new Date().toISOString().split('T')[0];
@@ -561,7 +647,7 @@ function selectType(type, el) {
   currentType = type;
   document.querySelectorAll('.device-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('laborNote').textContent = type === 'iphone' ? '$60' : '$80';
+  document.getElementById('laborNote').textContent = type === 'iphone' ? '$70' : '$80';
   buildModelOptions(type);
   document.getElementById('pricingOutput').innerHTML = `
     <div class="select-prompt">
@@ -615,6 +701,7 @@ function updatePricing() {
       tier:'Economy',
       name:'Aftermarket LCD',
       desc:'LCD incell display. Functional and budget-friendly. Good color accuracy with slightly reduced brightness vs. original.',
+      warranty:'No warranty', warrantyClass:'no-warranty', warrantyIcon:'⚠️',
       parts: d.b
     },
     {
@@ -622,6 +709,7 @@ function updatePricing() {
       tier:'Standard',
       name:'OLED Aftermarket Pro',
       desc:'XO7 soft OLED display. Near-original color reproduction, true blacks, and excellent brightness. Most popular choice.',
+      warranty:'90-day warranty', warrantyClass:'standard-warranty', warrantyIcon:'🛡️',
       parts: d.s,
       recommended: true
     },
@@ -630,6 +718,7 @@ function updatePricing() {
       tier:'Premium',
       name:'Genuine OEM / Refurbished',
       desc:'Apple original or OEM-pull parts. Identical to factory display — best color, touch response, and True Tone support.',
+      warranty:'Lifetime warranty', warrantyClass:'lifetime-warranty', warrantyIcon:'🛡️',
       parts: d.p
     },
   ];
@@ -646,6 +735,7 @@ function updatePricing() {
             <div class="card-tier">${t.tier}</div>
             <div class="card-name">${t.name}</div>
             <div class="card-desc">${t.desc}</div>
+            <div class="warranty-badge ${t.warrantyClass}">${t.warrantyIcon} ${t.warranty}</div>
             ${avail ? (() => {
               const stock = getStockStatus(model, t.key);
               const isOut = stock === 'out';
@@ -666,7 +756,7 @@ function updatePricing() {
       }).join('')}
     </div>
     <div class="pricing-note" style="margin-top:14px;">
-      Showing pricing for <strong>${model}</strong> screen replacement · Labor: <strong>${fmt(labor)}</strong> · 90-day warranty included
+      Showing pricing for <strong>${model}</strong> screen replacement · Labor: <strong>${fmt(labor)}</strong> · Warranty varies by tier
     </div>`;
 
   output.innerHTML = html;
@@ -676,12 +766,17 @@ function updatePricing() {
 
 function bookRepair(model, tierLabel, total) {
   // Store for later use
-  bookingDetails = { model, tierLabel, total };
+  bookingDetails = { model, tierLabel, total, baseTotal: total, distanceFee: null };
 
   // Populate the summary banner
   document.getElementById('summaryDevice').textContent = model;
   document.getElementById('summaryTier').textContent   = tierLabel;
   document.getElementById('summaryTotal').textContent  = fmt(total);
+
+  // Reset travel fee row
+  const distRow = document.getElementById('summaryDistFeeRow');
+  distRow.style.display = 'none';
+  document.getElementById('summaryDistFee').textContent = '—';
 
   // Reset form state
   document.getElementById('scheduleForm').style.display  = 'block';
@@ -774,6 +869,7 @@ function submitBooking() {
       device: bookingDetails.model || '',
       repair_type: 'Screen Replacement',
       quality_tier: bookingDetails.tierLabel || '',
+      travel_fee: bookingDetails.distanceFee != null ? (bookingDetails.distanceFee === 0 ? 'Free (within 5 mi)' : '$' + bookingDetails.distanceFee + ' (' + (bookingDetails.distanceMiles || 0).toFixed(1) + ' mi)') : 'TBD at arrival',
       estimated_total: bookingDetails.total ? '$' + bookingDetails.total.toFixed(2) : ''
     })
   })
@@ -805,6 +901,7 @@ function showSuccess(data) {
     <div class="conf-row"><span>Device</span><span>${bookingDetails.model}</span></div>
     <div class="conf-row"><span>Repair</span><span>Screen Replacement</span></div>
     <div class="conf-row"><span>Quality</span><span>${bookingDetails.tierLabel}</span></div>
+    ${bookingDetails.distanceFee != null ? `<div class="conf-row"><span>Travel Fee</span><span>${bookingDetails.distanceFee === 0 ? 'Free' : '$' + bookingDetails.distanceFee}</span></div>` : ''}
     <div class="conf-row"><span>Total (est.)</span><span>${fmt(bookingDetails.total)}</span></div>
     <div class="conf-row"><span>Date</span><span>${dateFormatted}</span></div>
     <div class="conf-row"><span>Time</span><span>${slotLabels[data.slot]}</span></div>
