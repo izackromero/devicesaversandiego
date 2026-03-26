@@ -875,6 +875,23 @@ function submitBooking() {
   })
   .then(res => {
     if (res.ok) {
+      // Fire SMS notification via Twilio Function (silent – don’t block UI)
+      fetch('https://booking-sms-7392.twil.io/welcome', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          address,
+          date,
+          time_slot: slotLabels[selectedSlot] || selectedSlot,
+          notes: notes || 'None',
+          device: bookingDetails.model || '',
+          quality_tier: bookingDetails.tierLabel || '',
+          travel_fee: bookingDetails.distanceFee != null ? (bookingDetails.distanceFee === 0 ? 'Free (within 5 mi)' : '$' + bookingDetails.distanceFee + ' (' + (bookingDetails.distanceMiles || 0).toFixed(1) + ' mi)') : 'TBD at arrival',
+          estimated_total: bookingDetails.total ? '$' + bookingDetails.total.toFixed(2) : ''
+        })
+      }).catch(() => {}); // ignore errors – SMS is best-effort
       showSuccess({ name, phone, email, address, date, slot: selectedSlot, notes });
     } else {
       btn.disabled = false;
