@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.devicesaversandiego.com/sitemap.xml
+Sitemap: https://devicesaversd.com/sitemap.xml
