@@ -151,6 +151,7 @@
       background:var(--dark4); border:1px solid var(--border2); border-radius:8px;
       color:var(--lgray); font-size:0.82rem; font-weight:700; text-align:center;
       cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif;
+      text-decoration:none;
     }
     .book-btn:hover { background:var(--white); color:var(--black); border-color:var(--white); }
     .pricing-card.recommended .book-btn { background:var(--white); color:var(--black); border-color:var(--white); }
@@ -273,7 +274,8 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-YHEM3RE469');
-  </script></head>
+  </script>
+</head>
 <body>
 
 <nav>
@@ -756,7 +758,7 @@ function updatePricing() {
                 <span class="price-total-val">${fmt(total)}</span>
               </div>
               ${stockBadge(stock)}
-              <button class="book-btn ${isOut ? 'out-of-stock' : ''}" onclick="bookRepair('${model}', '${t.tier} — ${t.name}', ${total})">${isOut ? 'Out of Stock — Call Us' : 'Book This Repair →'}</button>
+              <a class="book-btn" href="tel:+16198208047">${isOut ? '📞 Out of Stock — Call Us (619) 820-8047' : '📞 Call to Schedule · (619) 820-8047'}</a>
               `;
             })() : `<div class="na-msg">Not available<br>for this model</div>`}
           </div>
